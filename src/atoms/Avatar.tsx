@@ -13,7 +13,7 @@ const Avatar :React.FC<AvatarProps>=(props) =>{
       size = "min-w-[3rem] h-[3rem]"
       break;
     case "big":
-      size = "w-[4rem] h-[4rem]"
+      size = "w-[12rem] h-[12rem]"
       break;
   }
   return (

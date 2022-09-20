@@ -55,6 +55,7 @@ export const user = {
     username : "siska199",
     image : "https://i.pinimg.com/736x/58/1b/7a/581b7aabc75e966e846034df4752514e.jpg",
     status : "online",
+    info : "Allah nomer sate di dalam hidupku"
 
 }
 
