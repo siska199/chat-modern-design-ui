@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,::after,::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@layer base{
+    body{
+        background-color : #212121;
+        color : white;
+    }
+
+}
+@layer components{
+
+}
+
+@layer utilities{
+    .container{
+        @apply mx-auto max-w-[1500px] h-screen bg-cd800 border-gray-800 border-[0.005rem] flex
+    }
+    .scrollbar-hidden {
+        -ms-overflow-style: none;
+        scrollbar-width: none; /* Firefox */
+    }
+    .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+    }
+    ::-webkit-scrollbar{
+        @apply w-1 h-1
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #a5acb8;
+        border-radius: 10px;
+        background:white;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-lg bg-cd600
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-cd500
+    }
+}
+
+
