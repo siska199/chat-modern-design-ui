@@ -6,7 +6,7 @@ import { contactActive } from '../lib/data'
 const ContactInfo = () => {
   const {image, username, info, status, fullname} = contactActive
   return (
-    <article className='w-[18rem] border-l-[0.005rem] border-cd600'>
+    <article className='w-0 border-l-[0.005rem] border-cd600 '>
         <header className='header px-3'>
           <h1 className='font-medium text-lg'>&#127802; Info Contact</h1>
           <Icon icon={<IoCloseOutline/>} handleOnClickIcon={()=>console.log("close profile")}/>

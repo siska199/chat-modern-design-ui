@@ -10,7 +10,7 @@ const Chat = () => {
         <SidebarMenu/>
         <SidebarContacts/>
         <MessagesBox/>
-      <ContactInfo/>
+        <ContactInfo/>
     </Page>
   )
 }

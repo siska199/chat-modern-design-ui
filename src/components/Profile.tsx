@@ -7,7 +7,7 @@ const Profile = () => {
   const {image, username, name, info} = user
 
   return (
-    <div className={`absolute top-0 bg-cd800 h-full w-full z-20 -translate-x-[120%] translate-x-0 `}>
+    <div className={`absolute top-0 bg-cd800 h-full w-full z-20 -translate-x-[120%] `}>
       <header className='header px-5'>
         <h1 className='font-semibold text-[1.3rem]'>Profile &#127800;</h1>
         <Icon icon={<IoCloseOutline/>} handleOnClickIcon={()=>console.log("close profile")} />
