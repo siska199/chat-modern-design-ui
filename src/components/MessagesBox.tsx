@@ -5,7 +5,7 @@ import ListMessage from './ListMessage'
 
 const MessagesBox = () => {
   return (
-    <section className='flex-grow overflow-y-scroll'>
+    <section className='flex-grow overflow-y-hidden'>
       <HeaderMessagesBox/>
       <ListMessage/>
       <AddMessage/>

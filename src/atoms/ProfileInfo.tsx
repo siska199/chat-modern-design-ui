@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { ProfileInfoProps } from '../lib/propsType'
-import {FcEditImage} from "react-icons/fc"
 
 const ProfileInfo:React.FC<ProfileInfoProps> = (props) => {
     const {label, value} = props

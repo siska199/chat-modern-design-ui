@@ -60,8 +60,11 @@ export const user = {
 }
 
 export const contactActive = {
+    id : '1',
     image : "https://i.pinimg.com/564x/4f/62/06/4f620697392a53027a2af2ba1be0717f.jpg",
     username : "User1",
+    fullname : "siska apriana rifianti",
+    info : "Hamba Allah tuhan seluruh alam",
     status : "online"
 }
 
@@ -83,7 +86,8 @@ export const messages = [
     idReceiver: i%2? '1' : '2',
     idSender :  i%2? '2' : '1',
     text : i%2? 'lorem ipsum hoho hihi jangan menyerah': 'Oke Hoho Hihihi lala lili mama mimi djkbiwa jhbjhvd kbdvh kjhbdva ifbevhi fdiuvhiesua biufbeviujfbviusd ifdhbvi fvb',
-    createdAt : i%2 ? "12:00 PM":"10:00 AM"
+    createdAt : i%2 ? "12:00 PM":"10:00 AM",
+    read : i===0?false:true 
 }))
 
 export const iconsHeaderMessagesBox = [

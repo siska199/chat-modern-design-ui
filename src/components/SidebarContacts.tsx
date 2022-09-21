@@ -6,7 +6,7 @@ import Profile from './Profile'
 
 const SidebarContacts = () => {
   return (
-    <section className='w-[22rem] relative flex flex-col overflow-y-scroll scrollbar-hidden border-cd700 bg-cd800 border-r-[0.005rem]'>
+    <section className='w-[22rem] relative flex flex-col border-cd700 bg-cd800 border-r-[0.005rem]'>
       <>
         <HeaderSidebarContacts/>
         <SearchContact/>

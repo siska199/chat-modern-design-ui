@@ -7,9 +7,9 @@ const SidebarMenu = () => {
   const image = "https://i.pinimg.com/736x/58/1b/7a/581b7aabc75e966e846034df4752514e.jpg"
   return (
     <section className='flex-[0.07] p-3 flex flex-col justify-between items-center border-cd700 border-r-[0.005rem] h-full bg-cd800'>
-      <div className="cursor-pointer border-[0.15rem]  border-[#60a5fa] bg-white flex rounded-full h-[2.7rem] w-[2.7rem]">
-        <SiWechat color="#60a5fa" 
-        className="text-[1.8rem] m-auto"/>
+      <div className="cursor-pointer border-[0.15rem]  border-main bg-white flex rounded-full h-[2.7rem] w-[2.7rem]">
+        <SiWechat  
+        className="text-[1.8rem] m-auto text-main"/>
       </div>
 
       <div className="flex flex-col gap-4 text-[1.2rem] ">
@@ -17,7 +17,7 @@ const SidebarMenu = () => {
           iconsMenuSidebar.map((data,i)=>{
             const active = activeMenu && activeMenu===data.name
             return (
-            <div className={`${active&&"bg-[#60a5fa] text-white"} hover:text-white hover:bg-[#60a5fa] text-cd500 w-[2.5rem] h-[2.5rem] flex justify-center items-center cursor-pointer rounded-full border-cd600`}>
+            <div className={`${active&&"bg-main text-white"} hover:text-white hover:bg-main text-cd500 w-[2.5rem] h-[2.5rem] flex justify-center items-center cursor-pointer rounded-full border-cd600`}>
               { active? data.active : data.inActive}
             </div>)
           })

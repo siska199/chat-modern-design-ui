@@ -49,6 +49,7 @@ export interface MessageProps{
     idSender :  string
     text : string
     createdAt : string
+    read : boolean
 }
 
 export interface ProfileInfoProps{
