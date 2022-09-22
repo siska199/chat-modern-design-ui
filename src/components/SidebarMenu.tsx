@@ -2,6 +2,7 @@ import {SiWechat} from "react-icons/si"
 import { iconsMenuSidebar } from "../lib/data"
 import {AiOutlinePlus} from "react-icons/ai"
 import Avatar from "../atoms/Avatar"
+
 const SidebarMenu = () => {
   const activeMenu = "messages"
   const image = "https://i.pinimg.com/736x/58/1b/7a/581b7aabc75e966e846034df4752514e.jpg"

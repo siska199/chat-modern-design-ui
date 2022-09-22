@@ -1,6 +1,6 @@
-import { ModalProps } from "../lib/propsType"
+import { TModalProps } from "../lib/types"
 
-const Modal : React.FC<ModalProps> = ({children}) => {
+const Modal : React.FC<TModalProps> = ({children}) => {
   return (
     <article>
         {children}

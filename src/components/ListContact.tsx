@@ -8,7 +8,7 @@ const ListContact = () => {
       <div>
         {
           contacts.map((data,i)=>(
-            <Contact key={i} username={data.username} image={data.image} lastMessage={data.lastMessage} countNotif={data.countNotif}/>
+            <Contact key={i} {...data}/>
           ))
         }
       </div>

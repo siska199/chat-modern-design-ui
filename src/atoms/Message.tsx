@@ -1,10 +1,10 @@
 import React from 'react'
 import { user } from '../lib/data'
-import { MessageProps } from '../lib/propsType'
+import {TMessageData } from '../lib/types'
 
-const Message:React.FC<MessageProps> = (props) => {
+const Message:React.FC<TMessageData> = (props) => {
   const {id} = user
-  const {idSender,idReceiver,text, createdAt, read} = props
+  const {idSender,text, createdAt, read} = props
 
   const sender = id===idSender?true:false
   console.log("sender: ", sender)

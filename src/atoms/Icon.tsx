@@ -1,7 +1,7 @@
 import React from 'react'
-import { IconProps } from '../lib/propsType'
+import { TIconProps } from '../lib/types'
 
-const Icon : React.FC<IconProps> = (props) => {
+const Icon : React.FC<TIconProps> = (props) => {
   const {icon, handleOnClickIcon, type} = props
 
   return (

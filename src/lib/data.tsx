@@ -1,8 +1,9 @@
-import { IconMenuSidebarProps } from "./propsType"
 import {RiMessage2Fill,RiMessage2Line} from "react-icons/ri"
 import {BsTelephone, BsTelephoneFill,BsBookmarkFill,BsBookmark,BsPeopleFill, BsPeople} from "react-icons/bs"
 import {AiTwotoneVideoCamera,AiOutlineVideoCamera,AiOutlineSetting,AiTwotoneSetting} from "react-icons/ai"
 import {BiDotsVerticalRounded} from "react-icons/bi"
+import { TContactData, TIconMenuSidebarData, TMessageData, TUserData,TIconHeaderMessagesBox } from "./types"
+
 export const contactsAvatar = [
     "https://i.pinimg.com/564x/6d/8d/27/6d8d2772839d339ced26deebab2632aa.jpg",
     "https://i.pinimg.com/564x/50/40/00/504000bbc3e9e26dcaa7b329c711be7a.jpg",
@@ -16,9 +17,7 @@ export const contactsAvatar = [
     "https://i.pinimg.com/564x/59/e1/79/59e179bb27578b114344fd2b3cdd35ee.jpg",
 ]
 
-
-
-export const iconsMenuSidebar : IconMenuSidebarProps[]  = [
+export const iconsMenuSidebar : TIconMenuSidebarData[]  = [
     {
         name : "messages",
         active : <RiMessage2Fill/>,
@@ -49,48 +48,7 @@ export const iconsMenuSidebar : IconMenuSidebarProps[]  = [
 
 ]
 
-export const user = {
-    id :'1',
-    name : "Siska Apriana rifianti",
-    username : "siska199",
-    image : "https://i.pinimg.com/736x/58/1b/7a/581b7aabc75e966e846034df4752514e.jpg",
-    status : "online",
-    info : "Allah nomer sate di dalam hidupku"
-
-}
-
-export const contactActive = {
-    id : '1',
-    image : "https://i.pinimg.com/564x/4f/62/06/4f620697392a53027a2af2ba1be0717f.jpg",
-    username : "User1",
-    fullname : "siska apriana rifianti",
-    info : "Hamba Allah tuhan seluruh alam",
-    status : "online"
-}
-
-export const contacts = [
-    ...Array(10)
-].map((_,i)=>({
-    username : `usernam${i}`,
-    image : `https://i.pinimg.com/564x/4f/62/06/4f620697392a53027a2af2ba1be0717f.jpg`,
-    lastMessage :{
-        text : "loprem ipsum hoho hihihi",
-        createdAt: "12:00 PM"
-    },
-    countNotif : 4
-}))
-
-export const messages = [
-    ...Array(20)
-].map((_,i)=>({
-    idReceiver: i%2? '1' : '2',
-    idSender :  i%2? '2' : '1',
-    text : i%2? 'lorem ipsum hoho hihi jangan menyerah': 'Oke Hoho Hihihi lala lili mama mimi djkbiwa jhbjhvd kbdvh kjhbdva ifbevhi fdiuvhiesua biufbeviujfbviusd ifdhbvi fvb',
-    createdAt : i%2 ? "12:00 PM":"10:00 AM",
-    read : i===0?false:true 
-}))
-
-export const iconsHeaderMessagesBox = [
+export const iconsHeaderMessagesBox : TIconHeaderMessagesBox[] = [
     {
         name : "telephones",
         icon : <BsTelephone/>,
@@ -105,3 +63,55 @@ export const iconsHeaderMessagesBox = [
         onClick : ()=>console.log("click icon menu")
     },
 ]
+
+
+
+export const user : TUserData = {
+    id :'1',
+    fullname : "Siska Apriana rifianti",
+    username : "siska199",
+    image : "https://i.pinimg.com/736x/58/1b/7a/581b7aabc75e966e846034df4752514e.jpg",
+    status : "online",
+    info : "Allah nomer sate di dalam hidupku",
+    createdAt : "",
+    updatedAt : ""
+}
+
+export const contactActive : TUserData = {
+    id : '1',
+    image : "https://i.pinimg.com/564x/4f/62/06/4f620697392a53027a2af2ba1be0717f.jpg",
+    username : "User1",
+    fullname : "siska apriana rifianti",
+    info : "Hamba Allah tuhan seluruh alam",
+    status : "online",
+    createdAt : "",
+    updatedAt : ""
+}
+
+export const contacts : TContactData[] = [
+    ...Array(10)
+].map((_,i)=>({
+    id : `${i}`,
+    fullname : `fullname${i}`,
+    info : '',
+    username : `usernam${i}`,
+    image : `https://i.pinimg.com/564x/4f/62/06/4f620697392a53027a2af2ba1be0717f.jpg`,
+    lastMessage :{
+        text : "loprem ipsum hoho hihihi",
+        createdAt: "12:00 PM"
+    },
+    status : "offline",
+    countNotif : 4,
+}))
+
+export const messages:TMessageData[] = [
+    ...Array(20)
+].map((_,i)=>({
+    id : '1',
+    idReceiver: i%2? '1' : '2',
+    idSender :  i%2? '2' : '1',
+    text : i%2? 'lorem ipsum hoho hihi jangan menyerah': 'Oke Hoho Hihihi lala lili mama mimi djkbiwa jhbjhvd kbdvh kjhbdva ifbevhi fdiuvhiesua biufbeviujfbviusd ifdhbvi fvb',
+    createdAt : i%2 ? "12:00 PM":"10:00 AM",
+    read : i===0?false:true,
+    day : "Sunday",
+}))

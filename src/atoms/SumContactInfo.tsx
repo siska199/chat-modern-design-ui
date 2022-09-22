@@ -1,7 +1,7 @@
-import { SumContactInfoProps } from "../lib/propsType"
+import { TSumContactInfoProps } from "../lib/types"
 import Avatar from "./Avatar"
 
-const SumContactInfo : React.FC<SumContactInfoProps> = (props) => {
+const SumContactInfo : React.FC<TSumContactInfoProps> = (props) => {
   const {image, username, info, type} = props
   return (
     <div className="flex items-center gap-3">

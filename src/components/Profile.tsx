@@ -4,7 +4,7 @@ import {IoCloseOutline} from "react-icons/io5"
 import ProfileInfo from '../atoms/ProfileInfo'
 
 const Profile = () => {
-  const {image, username, name, info} = user
+  const {image, username, fullname, info} = user
 
   return (
     <div className={`absolute top-0 bg-cd800 h-full w-full z-20 -translate-x-[120%] `}>
@@ -18,7 +18,7 @@ const Profile = () => {
         </div>
         <div className='my-5 flex flex-col gap-10 px-5'>
           <ProfileInfo value={username} label={"Username"}/>
-          <ProfileInfo value={name} label={"Name"}/>
+          <ProfileInfo value={fullname} label={"Name"}/>
           <ProfileInfo value={info} label={"Info"}/>
         </div>
       </section>

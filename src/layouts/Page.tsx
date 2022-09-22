@@ -1,8 +1,8 @@
-import { PageProps } from "../lib/propsType"
+import {TPageProps } from "../lib/types"
 
-const Page : React.FC<PageProps> = ({children}) => {
+const Page : React.FC<TPageProps> = ({children}) => {
   return (
-    <article className='container overflow-x-hidden'>
+    <article className='container overflow-hidden'>
       {children}
     </article>
   )

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { ProfileInfoProps } from '../lib/propsType'
+import { TProfileInfoProps } from '../lib/types'
 
-const ProfileInfo:React.FC<ProfileInfoProps> = (props) => {
+const ProfileInfo:React.FC<TProfileInfoProps> = (props) => {
     const {label, value} = props
     const [edit, setEdit] = useState(false)
   return (
@@ -11,13 +11,13 @@ const ProfileInfo:React.FC<ProfileInfoProps> = (props) => {
         {
             edit?(
                 <>
-                    <input className='font-thin w-full outline-none bg-cd800' value={value}/>
-                    <span>&#128500;</span>
+                    <input className='font-thin w-full outline-none bg-cd800' value={value?value:""}/>
+                    <span onClick={()=>setEdit(false)}>&#128500;</span>
                 </>
             ):(
                 <>
                     {value}
-                    <span className='cursor-pointer'>&#128393;</span>
+                    <span className='cursor-pointer' onClick={()=>setEdit(true)}>&#128393;</span>
                 </>
             )
         }

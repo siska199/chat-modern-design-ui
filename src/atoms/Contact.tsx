@@ -1,7 +1,7 @@
+import { TContactData } from '../lib/types'
 import SumContactInfo from './SumContactInfo'
-import { ContactPorps } from '../lib/propsType'
 
-const Contact: React.FC<ContactPorps> = (props) => {
+const Contact: React.FC<TContactData> = (props) => {
   const {username, image, lastMessage:{text, createdAt}, countNotif} = props
   return (
     <div className='p-3 flex justify-between hover:bg-cd700 cursor-pointer'>

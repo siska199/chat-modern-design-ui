@@ -1,6 +1,6 @@
-import { AvatarProps } from "../lib/propsType"
+import { TAvatarProps } from "../lib/types"
 
-const Avatar :React.FC<AvatarProps>=(props) =>{
+const Avatar :React.FC<TAvatarProps>=(props) =>{
 
   const {url , sizeType, online, handleOnClickImage} = props
 
