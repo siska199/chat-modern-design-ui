@@ -6,7 +6,6 @@ const Input:React.FC<TInputProps> = (props) => {
   const {label, handleOnChange,error,type, value,...inputProps} = props
   const [seePassword, setSeePassword] = useState(false)
   const typePassword = (label==="Password"&&seePassword===true)?"text" :"password"
-  label==="Password"&&console.log(value)
   return (
       <div className='w-full relative rounded-md '>
         <input onChange={(e)=>handleOnChange(e)} value={value} type={label==="Password"?typePassword:type} className='input-auth peer z-20 font-thin  w-full outline-none bg-cd700 rounded-md p-3 placeholder:text-cd700' placeholder={label}  {...inputProps}/>

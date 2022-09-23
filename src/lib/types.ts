@@ -1,4 +1,6 @@
+import { RootState } from './../redux/store';
 import React from "react"
+import { AppDispatch } from "../redux/store"
 
 //--------------------------------------------COMPONENT-------------------------------------------------//
 
@@ -53,7 +55,7 @@ export interface TProfileInfoProps{
     value : string | null
     label : string
 }
-
+//---atoms/Input.tsx-----//
 export interface TInputProps{
     name: string
     label: string
@@ -62,6 +64,11 @@ export interface TInputProps{
     error: string
     value: string
     handleOnChange : (e:React.ChangeEvent<HTMLInputElement>)=>void
+}
+//-----atoms/Alert.tsx------//
+export interface TAlertProps{
+    type : string
+    message : string
 }
 
 //-------------------------------------------------------DATA------------------------------------------------------//
@@ -142,4 +149,10 @@ export type TActionChat =
 | {type: TypeAction.SET_ACTIVE_CONTACT_DATA ; payload : TContactData | null}
 | {type: TypeAction.SET_CONTACTS; payload : []|TContactData[]}
 | {type: TypeAction.SET_MESSAGES; payload : []|TMessageData[]}
+
+//---------------------------------Type Redux toolkit------------------------------//
+export interface TThunkApi{
+    dispatch : AppDispatch
+    state : RootState
+}
 

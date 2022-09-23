@@ -2,13 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/global.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { ReactNotifications } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ReactNotifications />
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
