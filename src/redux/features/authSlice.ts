@@ -1,4 +1,5 @@
-import { TFormAuth, TUserData, TThunkApi } from './../../lib/types';
+import { setAuthToken } from './../../lib/apiConfig';
+import { TFormAuth, TUserData, } from './../../lib/types';
 import {createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit"
 import API from '../../lib/apiConfig';
 import API_ENDPOINTS from '../../lib/apiEndpoints';
@@ -37,13 +38,13 @@ try {
         "Content-Type":"application/json"
     }
     })
-    console.log("res: ",res)
+    localStorage.setItem("token", res.data.data.token);
+    setAuthToken(res.data.data.token)
     return{
         user : res.data.data,
         error : null
     }
 } catch (error : any) {
-    console.log(error.response.data.message)
     return {
         error : error.response.data.message,
         user : null
@@ -59,7 +60,8 @@ const handleRegister = createAsyncThunk<TPayloadAuth,TFormAuth,{}>("auths/regist
             "Content-Type":"application/json"
         }
         })
-        console.log("res: ",res)
+        localStorage.setItem("token", res.data.data.token);
+        setAuthToken(res.data.data.token)
         return{
             user : res.data.data,
             error : null
@@ -73,6 +75,40 @@ const handleRegister = createAsyncThunk<TPayloadAuth,TFormAuth,{}>("auths/regist
     }
 })
 
+
+const handleGetProfileData = createAsyncThunk<TPayloadAuth,void,{}>("auths/profileData", async()=>{
+    try {
+        console.log("masokkkk")
+        setAuthToken(localStorage.getItem('token') as string)
+        const dataUser = await API.get(API_ENDPOINTS.USER);
+        console.log("datauser: ", dataUser)
+        return {
+          user: dataUser.data.data,
+          error : null
+        };
+    } catch (error : any) {
+        console.log(error)
+        return {
+            user : null,
+            error: error.response.data.message,
+          };
+    }
+})
+
+const handleLogout = createAsyncThunk<{},undefined,{}>("profile/Logout", async () => {
+    try {
+      await API.get(API_ENDPOINTS.LOGOUT);
+      localStorage.removeItem("token");
+      return null
+    } catch (error:any) {
+      return {
+        error: error.response.data.message,
+      };
+    }
+  });
+
+
+
 const authSlice = createSlice({
     name : "auths",
     initialState,
@@ -80,6 +116,7 @@ const authSlice = createSlice({
 
     },
     extraReducers :(builder)=> {
+        //-----
         builder.addCase(handleLogin.pending,(state,action)=>{
             state.loading = true
         })
@@ -91,7 +128,7 @@ const authSlice = createSlice({
         builder.addCase(handleLogin.rejected,(state,action)=>{
             state.loading = false
         })
-
+        //----------
         builder.addCase(handleRegister.pending,(state,action)=>{
             state.loading = true
         })
@@ -103,8 +140,34 @@ const authSlice = createSlice({
         builder.addCase(handleRegister.rejected,(state,action)=>{
             state.loading = false
         })
+        //--------
+        builder.addCase(handleGetProfileData.pending,(state,action)=>{
+            state.loading = true
+        })
+        builder.addCase(handleGetProfileData.fulfilled,(state,action:PayloadAction<TPayloadAuth>)=>{
+            console.log(action.payload)
+            state.error = action.payload.error
+            state.user = action.payload.user
+            state.loading = false  
+        })
+        builder.addCase(handleGetProfileData.rejected,(state,action)=>{
+            state.loading = false
+        })
+        //---------
+        builder.addCase(handleLogout.pending,(state,action)=>{
+            state.loading = true
+        })
+        builder.addCase(handleLogout.fulfilled,(state,action:PayloadAction<{}>)=>{
+            state.error = null
+            state.user = null
+            state.loading = false  
+        })
+        builder.addCase(handleLogout.rejected,(state,action)=>{
+            state.loading = false
+        })
+        //-----------------
     }
 })
 
 export default authSlice.reducer
-export {handleLogin, handleRegister}
+export {handleLogin, handleRegister,handleGetProfileData,handleLogout}

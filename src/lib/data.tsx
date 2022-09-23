@@ -141,4 +141,17 @@ export const inputsFormAuth = [
         "Password should be 8-20 characters and includes at least contain 1 lowercase, 1 uppercase, 1 numeric, and 1 special character",
     },
   ];
-  
+
+export const dataDropdownSidebarContacts= [
+    {
+        name :"Group baru",
+        
+    },{
+        name :"Pesan berbintang",
+    },{
+        name :"Setelan",
+    },{
+        name :"Keluar",
+    }
+
+];
