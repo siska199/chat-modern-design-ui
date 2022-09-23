@@ -1,13 +1,14 @@
 import React, {useState} from "react"
+import {useNavigate} from "react-router-dom"
 import Input from '../atoms/Input'
 import Loading from "../atoms/Loading"
 import { inputsFormAuth } from "../lib/data"
+import { Alert } from "../lib/helperFunction"
 import { TFormAuth } from "../lib/types"
 import { handleLogin, handleRegister } from "../redux/features/authSlice"
 import { useAppDispatch } from "../redux/store"
-import { Store } from 'react-notifications-component';
-
 const FormAuth = () => {
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const initialForm : TFormAuth = {
         fullname : "",
@@ -34,21 +35,12 @@ const FormAuth = () => {
             dispatch(type==="Log In"? handleLogin(form):handleRegister(form)).then((state:any)=>{
                setLoading(false)
                if(state.payload.error){
-                Store.addNotification({
-                    title: "Error",
-                    message: state.payload.error,
-                    type: "danger",
-                    insert: "top",
-                    container: "top-right",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
-                    animationOut: ["animate__animated", "animate__fadeOut"],
-                    dismiss: {
-                      duration: 1000,
-                      onScreen: true
-                    }
-                  });
+                   Alert("Error","danger",state.payload.error)
                }else{
-
+                   setTimeout(()=>{
+                       navigate("/chat-home")
+                       Alert("Success","success",type==="Log In"?"Log in Success":"Register Success")
+                    },500)
                }
             })
         }

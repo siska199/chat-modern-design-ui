@@ -1,4 +1,23 @@
 import moment from "moment";
+import { Store } from 'react-notifications-component';
+
+export const Alert  = (title:string, type:"danger"|"warning"|"success", message:string)=> {
+  return (
+    Store.addNotification({
+        title: title,
+        message: message,
+        type: type,
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 2000,
+          onScreen: true
+        }
+      })
+  )
+}
 
 export const handleUploadImageToCloudinary = async (image:File) => {
     const formImage = new FormData();

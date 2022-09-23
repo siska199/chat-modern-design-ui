@@ -53,10 +53,7 @@ try {
 
 const handleRegister = createAsyncThunk<TPayloadAuth,TFormAuth,{}>("auths/register", async(data)=>{
     try {    
-        const form = {
-            username : data.username,
-            password : data.password
-           }
+        const form = data
         const res = await API.post(API_ENDPOINTS.REGISTER,form,{
         headers : {
             "Content-Type":"application/json"
