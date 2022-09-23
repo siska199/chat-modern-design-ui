@@ -1,4 +1,3 @@
-import React from 'react'
 import Contact from '../atoms/Contact'
 import { contacts } from '../lib/data'
 const ListContact = () => {

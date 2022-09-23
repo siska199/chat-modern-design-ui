@@ -1,7 +1,7 @@
 import {MdOutlineNavigateNext} from "react-icons/md"
 import Avatar from "../atoms/Avatar"
 import { contacts } from "../lib/data"
-const ListUserOnline = () => {
+const ListUser = () => {
   return (
     <div className='p-3'>
         <div className="flex justify-between ">
@@ -11,7 +11,7 @@ const ListUserOnline = () => {
         <div className="flex max-w-[20rem] gap-4 overflow-x-scroll scrollbar-online my-[2rem]">
             {
                 contacts.map((data,i)=>(
-                    <div className="flex flex-col gap-3">
+                    <div key={i} className="flex flex-col gap-3">
                         <Avatar online={true} sizeType="medium"  url={data.image}/>
                         <p className="max-w-[3rem] text-[0.7rem] text-cd500 font-thin">{data.username}</p>
                     </div>
@@ -22,4 +22,4 @@ const ListUserOnline = () => {
   )
 }
 
-export default ListUserOnline
+export default ListUser

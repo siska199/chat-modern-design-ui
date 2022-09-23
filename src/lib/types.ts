@@ -54,6 +54,16 @@ export interface TProfileInfoProps{
     label : string
 }
 
+export interface TInputProps{
+    name: string
+    label: string
+    type: string
+    pattern: string
+    error: string
+    value: string
+    handleOnChange : (e:React.ChangeEvent<HTMLInputElement>)=>void
+}
+
 //-------------------------------------------------------DATA------------------------------------------------------//
 export interface TIconMenuSidebarData{
     name : string
@@ -67,6 +77,11 @@ export interface TIconHeaderMessagesBox{
     onClick : ()=>void
 }
 
+export interface TFormAuth{
+    username : string
+    fullname : string
+    password : string
+}
 export interface TUserData {
     id : string
     fullname : string

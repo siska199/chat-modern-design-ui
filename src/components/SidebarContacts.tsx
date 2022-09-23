@@ -1,6 +1,6 @@
 import HeaderSidebarContacts from './HeaderSidebarContacts'
 import SearchContact from './SearchContact'
-import ListUserOnline from './ListUserOnline'
+import ListUserOnline from './ListUser'
 import ListContact from './ListContact'
 import Profile from './Profile'
 

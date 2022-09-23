@@ -18,7 +18,7 @@ const SidebarMenu = () => {
           iconsMenuSidebar.map((data,i)=>{
             const active = activeMenu && activeMenu===data.name
             return (
-            <div className={`${active&&"bg-main text-white"} hover:text-white hover:bg-main text-cd500 w-[2.5rem] h-[2.5rem] flex justify-center items-center cursor-pointer rounded-full border-cd600`}>
+            <div  key={i} className={`${active&&"bg-main text-white"} hover:text-white hover:bg-main text-cd500 w-[2.5rem] h-[2.5rem] flex justify-center items-center cursor-pointer rounded-full border-cd600`}>
               { active? data.active : data.inActive}
             </div>)
           })

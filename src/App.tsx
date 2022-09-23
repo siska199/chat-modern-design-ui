@@ -1,5 +1,6 @@
 import {useEffect} from "react"
-import Chat from "./pages/Chat";
+import Auth from "./pages/Auth";
+// import Chat from "./pages/Chat";
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   },[])
   return (
     <>
-      <Chat/>
+      <Auth/>
     </>
   );
 }

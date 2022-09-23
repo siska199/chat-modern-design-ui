@@ -52,6 +52,42 @@
     ::-webkit-scrollbar-thumb:hover {
         @apply bg-cd500
     }
+    .small-text{
+        @apply text-[0.8rem] font-thin mt-2 text-cd500
+    }
 }
 
-
+/* ---------------------Remove autofill background-------------------------- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: white !important;
+}
+/*------------------------Input auth shake while input invalid and empty-------------------------*/
+.input-shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    border : 1px solid #881337;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-2px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(4px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-10px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(10px, 0, 0);
+    }
+  }

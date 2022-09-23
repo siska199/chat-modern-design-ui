@@ -64,7 +64,7 @@ export const iconsHeaderMessagesBox : TIconHeaderMessagesBox[] = [
     },
 ]
 
-
+//--------------------------------DATA PROCESSED-----------------------------
 
 export const user : TUserData = {
     id :'1',
@@ -115,3 +115,30 @@ export const messages:TMessageData[] = [
     read : i===0?false:true,
     day : "Sunday",
 }))
+
+export const inputsFormAuth = [
+    {
+      name: "fullname",
+      label: "Fullname",
+      type: "text",
+      pattern: "^([a-zA-Z]+[ ]{0,1})+$",
+      error: "Fullame should only contain alphaphet",
+    },
+    {
+      name: "username",
+      label: "Username",
+      type: "text",
+      pattern: "^[a-z0-9]{3,10}$",
+      error:
+        "Username should be 3-10 characters and should't contain uppercase letter",
+    },
+    {
+      name: "password",
+      label: "Password",
+      type: "password",
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+      error:
+        "Password should be 8-20 characters and includes at least contain 1 lowercase, 1 uppercase, 1 numeric, and 1 special character",
+    },
+  ];
+  
