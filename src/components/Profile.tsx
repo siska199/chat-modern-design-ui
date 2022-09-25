@@ -13,7 +13,7 @@ const Profile = () => {
     dispatch(handleModalProfile(false))
   }
   return (
-    <div className={`absolute top-0 bg-cd800 h-full w-full z-20 ${modalProfile?"translate-x-0":"-translate-x-[120%]"} transition-shortcut`}>
+    <div className={`absolute top-0 bg-cd800 h-full w-full z-[50] ${modalProfile?"translate-x-0":"-translate-x-[120%]"} transition-shortcut`}>
       <header className='header px-5'>
         <h1 className='font-semibold text-[1.3rem]'>Profile &#127800;</h1>
         <Icon icon={<IoCloseOutline/>} handleOnClickIcon={handleCloseProfile} />

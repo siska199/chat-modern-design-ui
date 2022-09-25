@@ -12,7 +12,7 @@ const ProfileInfo:React.FC<TProfileInfoProps> = (props) => {
                     <input className='font-thin w-full outline-none bg-cd800' value={value?value:""}/> :
                     <>{value}</>
             }
-            <span className='cursor-pointer' onClick={()=>setEdit(edit?false:true)}>{edit?"✏":"❌"}</span>
+            <span className='cursor-pointer' onClick={()=>setEdit(edit?false:true)}>{edit?"❌":"✏"}</span>
         </div>
     </div>
   )
