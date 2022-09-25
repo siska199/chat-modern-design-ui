@@ -10,7 +10,6 @@ function App() {
   const dispatch = useAppDispatch()
   useEffect(()=>{
     const token = localStorage.getItem("token")
-    console.log("token: ", token)
     token && dispatch(handleGetProfileData())
     const html = document.querySelector("html")
     html?.classList.add("dark")

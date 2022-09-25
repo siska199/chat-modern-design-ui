@@ -1,4 +1,3 @@
-import { Store } from 'react-notifications-component';
 import { RootState } from './../redux/store';
 import React from "react"
 import { AppDispatch } from "../redux/store"
@@ -66,9 +65,7 @@ export interface TInputProps{
     value: string
     handleOnChange : (e:React.ChangeEvent<HTMLInputElement>)=>void
 }
-//-----atoms/Alert.tsx------//
-export type TypeAlert = "danger"
-export type TAlertFunction = (type:TypeAlert,title:string, message:string)=>typeof Store
+
 
 //-------------------------------------------------------DATA------------------------------------------------------//
 export interface TIconMenuSidebarData{
@@ -154,4 +151,14 @@ export interface TThunkApi{
     dispatch : AppDispatch
     state : RootState
 }
+//--------------------------------------Alert toastify------------------------------
 
+export interface TTostifyConfig{
+    position: string
+    autoClose:number
+    hideProgressBar: boolean
+    closeOnClick:boolean
+    pauseOnHover: boolean
+    draggable: boolean
+    progress: undefined | boolean
+  }

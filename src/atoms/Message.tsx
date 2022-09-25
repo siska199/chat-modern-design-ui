@@ -7,8 +7,7 @@ const Message:React.FC<TMessageData> = (props) => {
   const {idSender,text, createdAt, read} = props
 
   const sender = id===idSender?true:false
-  console.log("sender: ", sender)
-  console.log("read",read)
+
   const stylesReadIndikator = `w-3 h-3 rounded-full ${read?"bg-sky-800":"bg-white"} `
   return (
     <div className={`${sender&&"justify-end"} flex`}>

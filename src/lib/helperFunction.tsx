@@ -1,22 +1,31 @@
 import moment from "moment";
-import { Store } from 'react-notifications-component';
+import {toast} from "react-toastify"
+import { ToastOptions } from "react-toastify/dist/types";
 
-export const Alert  = (title:string, type:"danger"|"warning"|"success", message:string)=> {
-  return (
-    Store.addNotification({
-        title: title,
-        message: message,
-        type: type,
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 2000,
-          onScreen: true
-        }
-      })
-  )
+export const Alert  = (type:"error"|"warning"|"success"|"info", message:string)=> {
+  const config : ToastOptions = {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: true,
+    closeOnClick:true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    delay : 0
+  }
+  switch(type){
+    case "success":
+      return toast.success(message,config)
+    case "error":
+      return toast.error(message,config)
+    case "warning":
+      return toast.warning(message,config)
+    case "info":
+      return toast.info(message,config)
+    default:
+      break;
+  } 
+
 }
 
 export const handleUploadImageToCloudinary = async (image:File) => {

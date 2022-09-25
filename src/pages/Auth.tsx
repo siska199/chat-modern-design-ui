@@ -6,8 +6,8 @@ import bg from "../assets/bg.png"
 const Auth = () => {
   return (
     <Page>
-      <article className='flex justify-center items-center gap-[3rem] mx-auto px-5'>
-        <div className='flex  flex-[0.5]'>
+      <article className='flex-col flex md:flex-row justify-center items-center gap-[1rem] md:gap-[3rem] mx-auto px-5'>
+        <div className='flex w-[10rem] md:w-[22rem] justify-center mx-auto'>
           <img alt="" src={bg} className="m-auto" />
         </div>
         <FormAuth/>

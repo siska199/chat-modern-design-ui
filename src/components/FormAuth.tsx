@@ -35,11 +35,11 @@ const FormAuth = () => {
             dispatch(type==="Log In"? handleLogin(form):handleRegister(form)).then((state:any)=>{
                setLoading(false)
                if(state.payload.error){
-                   Alert("Error","danger",state.payload.error)
+                   Alert("error",state.payload.error)
                }else{
                    setTimeout(()=>{
                        navigate("/chat-home")
-                       Alert("Success","success",type==="Log In"?"Log in Success":"Register Success")
+                       Alert("success",type==="Log In"?"Log in Success":"Register Success")
                     },500)
                }
             })
@@ -59,12 +59,12 @@ const FormAuth = () => {
         })
     }
   return (
-    <section className="flex flex-col gap-8 justify-center items-center flex-[0.3]">
+    <section className="flex flex-col gap-4 md:gap-8 justify-center items-center">
         <div className="text-center">
-            <h1 className="text-[1.7rem] font-medium">{type} to Your Account</h1>
+            <h1 className="text-[1.4rem] md:text-[1.7rem] font-medium">{type} to Your Account</h1>
             <p className="small-text">Your Own Digital Chat App</p>
         </div>
-        <form className=" flex flex-col gap-6 w-[21rem]">
+        <form className=" flex flex-col gap-4 md:gap-6 w-[21rem]">
             {
                 inputsFormAuth.map((data,i)=>{
                     if(type==="Log In"&&data.name==="fullname") return null
@@ -74,7 +74,7 @@ const FormAuth = () => {
                     )
                 })
             }
-            <button onClick={(e)=>handleSubmit(e)} className="bg-gradient-to-r flex justify-center items-center gap-2 p-3 font-medium rounded-md from-main to-blue-600">
+            <button onClick={(e)=>handleSubmit(e)} className="bg-gradient-to-r flex justify-center items-center gap-2 p-2 md:p-3 font-medium rounded-md from-main to-blue-600">
                 {type}
                 {loading &&                
                     <Loading size={"w-5 h-5"}/>

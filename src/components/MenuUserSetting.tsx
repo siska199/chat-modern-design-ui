@@ -4,17 +4,19 @@ import { handleLogout } from '../redux/features/authSlice'
 import { useAppDispatch } from '../redux/store'
 import {useNavigate} from "react-router-dom"
 import { Alert } from '../lib/helperFunction'
-const Dropdown = () => {
+import Dropdown from '../layouts/Dropdown'
+const MenuUserSetting= () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const handleMenuLogout = ()=>{
     dispatch(handleLogout()).then(()=>{
-      Alert("Success","success","Logout Success")
+      Alert("success","Logout Success")
       navigate("/")
     })
   }
   return (
-    <section className='absolute top-[3rem] w-[10rem] right-[0.1rem] z-[99] font-thin  py-3 rounded-md bg-[#27272a]'>
+    <Dropdown>
+      <div>
         {
             dataDropdownSidebarContacts.map((data,i)=>{
               let handleClickMenu = ()=>{}
@@ -22,8 +24,9 @@ const Dropdown = () => {
               return (<MenuItem key={i} handleClickMenu={handleClickMenu} data={data.name}/>)
             })
         }
-    </section>
+      </div>
+    </Dropdown>
   )
 }
 
-export default Dropdown
+export default MenuUserSetting
