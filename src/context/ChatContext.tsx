@@ -1,25 +1,32 @@
 import React, { createContext, useReducer } from "react";
-import { SET_ACTIVE_CONTACT_DATA, SET_CONTACTS, SET_MESSAGES } from "../lib/reducerTypes";
 import { IChatContextProvider, IChatContextState, TActionChat, TChatState } from "../lib/types";
 import SOCKET_EVENTS from "../lib/socketEvents";
-
-const ChatContext = createContext<IChatContextState|null>(null)
 
 const initialState : TChatState = {
     idUser : 1,
     activeContactData : null,
     messages : [],
-    contacts : []
+    contacts : [],
+    modalContactInfo : false
 }
+const defaultDispatch : React.Dispatch<TActionChat> = () => initialState
+const ChatContext = createContext<IChatContextState>({
+    state : initialState,
+    dispatch : defaultDispatch
+})
+
 
 const reducer = (state :TChatState,action:TActionChat) : TChatState=>{
     switch(action.type){
-        case SET_CONTACTS:
+        case "SET_CONTACTS":
             state = {...state, contacts: action.payload}
             return state
-        case SET_ACTIVE_CONTACT_DATA:
+        case "SET_ACTIVE_CONTACT_DATA":
             return {...state, activeContactData : action.payload}
-        case  SET_MESSAGES:
+        case "SET_MODAL_CONTACT_INFO" : 
+            console.log(action.payload)
+            return {...state, modalContactInfo : action.payload}
+        case  "SET_MESSAGES":
             return {...state, messages : action.payload}
         default:
             return {...state}
@@ -27,8 +34,7 @@ const reducer = (state :TChatState,action:TActionChat) : TChatState=>{
 }
 
 export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})=>{
-    const [state, dispatch] = useReducer(reducer, initialState)
-
+    const [state, dispatch] = useReducer<React.Reducer<TChatState,TActionChat>>(reducer, initialState)
     return(
         <ChatContext.Provider value={{state, dispatch}}>
             {children}

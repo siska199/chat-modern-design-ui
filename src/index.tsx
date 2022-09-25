@@ -7,18 +7,21 @@ import './styles/global.css';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ChatContextProvider } from './context/ChatContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-        <ToastContainer />
-      </BrowserRouter>
-    </Provider>
+      <Provider store={store}>
+        <ChatContextProvider>
+          <BrowserRouter>
+            <App />
+            <ToastContainer />
+          </BrowserRouter>
+        </ChatContextProvider>
+      </Provider>
   </React.StrictMode>
 );
 

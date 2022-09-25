@@ -7,7 +7,7 @@ const SidebarMenu = () => {
   const activeMenu = "messages"
   const image = "https://i.pinimg.com/736x/58/1b/7a/581b7aabc75e966e846034df4752514e.jpg"
   return (
-    <section className='flex-[0.07] p-3 flex flex-col justify-between items-center border-cd700 border-r-[0.005rem] h-full bg-cd800'>
+    <section className='flex-[0.07] px-1 py-3 md:p-3 flex flex-col justify-between items-center border-cd700 border-r-[0.005rem] h-full bg-cd800'>
       <div className="cursor-pointer border-[0.15rem]  border-main bg-white flex rounded-full h-[2.7rem] w-[2.7rem]">
         <SiWechat  
         className="text-[1.8rem] m-auto text-main"/>

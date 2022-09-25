@@ -1,11 +1,24 @@
+import {useContext} from "react"
 import Icon from "../atoms/Icon"
 import SumContactInfo from "../atoms/SumContactInfo"
+import ChatContext from "../context/ChatContext"
 import { contactActive, iconsHeaderMessagesBox } from "../lib/data"
+
 const HeaderMessagesBox = () => {
   const {image,username,status} = contactActive
-  return (
-    <div className=" px-7 header">
-      <SumContactInfo type="contact" image={image} username={username} info={status} /> 
+  const { dispatch} = useContext(ChatContext)
+  console.log("dispatch: ", dispatch)
+  const handleShowContactInfo = ()=>{
+    console.log("test")
+    dispatch({
+      type : "SET_MODAL_CONTACT_INFO",
+      payload : true
+    })
+  }
+
+  return(
+    <div className="px-7 header">
+      <SumContactInfo handleOnClickImage={handleShowContactInfo} type="contact" image={image} username={username} info={status} /> 
       <div className="flex gap-4">
       {
         iconsHeaderMessagesBox.map((data,i)=>(

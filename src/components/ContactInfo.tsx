@@ -2,14 +2,23 @@ import {IoCloseOutline} from "react-icons/io5"
 import {FcFullTrash} from "react-icons/fc"
 import Icon from '../atoms/Icon'
 import { contactActive } from '../lib/data'
+import { useContext } from "react"
+import ChatContext from "../context/ChatContext"
 
 const ContactInfo = () => {
   const {image, username, info, status, fullname} = contactActive
+  const {state:{modalContactInfo}, dispatch} = useContext(ChatContext)
+  const handleCloseContactInfo = ()=>{
+    dispatch({
+      type : "SET_MODAL_CONTACT_INFO",
+      payload: false
+    })
+  }
   return (
-    <article className='w-0 border-l-[0.005rem] border-cd600 '>
+    <article className={`w-0 ${modalContactInfo&&"w-[22rem]"} border-l-[0.005rem] border-cd600 transition-shortcut`}>
         <header className='header px-3'>
           <h1 className='font-medium text-lg'>&#127802; Info Contact</h1>
-          <Icon icon={<IoCloseOutline/>} handleOnClickIcon={()=>console.log("close profile")}/>
+          <Icon icon={<IoCloseOutline/>} handleOnClickIcon={handleCloseContactInfo}/>
         </header>
         <section className="my-[1.5rem] flex flex-col gap-[1.3rem]">
           <div className="text-center">

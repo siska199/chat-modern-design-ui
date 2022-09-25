@@ -113,7 +113,9 @@ const authSlice = createSlice({
     name : "auths",
     initialState,
     reducers : {
-
+        handleModalProfile : (state, action)=>{
+            state.modalProfile = action.payload
+        }
     },
     extraReducers :(builder)=> {
         //-----
@@ -170,4 +172,5 @@ const authSlice = createSlice({
 })
 
 export default authSlice.reducer
+export const {handleModalProfile} = authSlice.actions
 export {handleLogin, handleRegister,handleGetProfileData,handleLogout}

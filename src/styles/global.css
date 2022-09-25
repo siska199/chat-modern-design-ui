@@ -17,7 +17,7 @@
 }
 @layer components{
     .header{
-        @apply flex  bg-cd800 z-10 h-[5rem] items-center justify-between border-b-[0.005rem] border-cd700 w-full
+        @apply flex  bg-cd800 h-[5rem] items-center justify-between border-b-[0.005rem] border-cd700 w-full
     }
     .avatar-big{
         @apply w-[10rem] h-[10rem] rounded-full
@@ -25,9 +25,13 @@
     .container-setting-contact-info li {
         @apply cursor-pointer hover:text-main flex gap-4 items-center 
     }
+
 }   
 
 @layer utilities{
+    .transition-shortcut{
+        @apply transition-all duration-1000 ease-in-out
+    }
     .container{
         @apply mx-auto max-w-[1500px] h-screen bg-cd800 border-gray-800 border-[0.005rem] flex
     }

@@ -25,6 +25,7 @@ export interface TSumContactInfoProps {
     username : string
     info : string
     type : string
+    handleOnClickImage? : ()=>void
 } 
 //-----atoms/Icon.tsx-----//
 export interface TIconProps{
@@ -122,7 +123,7 @@ export interface TMessageData{
 //-----------------------------------------Typescript for chat context (ChatContext.tsx)---------------------------//
 export interface IChatContextState{ 
     state: TChatState
-    dispatch: React.Dispatch<TActionChat> 
+    dispatch: React.Dispatch<TActionChat>
 }
 
 export interface IChatContextProvider {
@@ -134,17 +135,20 @@ export interface TChatState {
     activeContactData : TContactData | null
     messages : [] | TMessageData[]
     contacts : [] | TContactData[]
+    modalContactInfo : boolean
 } 
-enum TypeAction {
+export enum TypeAction {
+    SET_MODAL_CONTACT_INFO = "SET_MODAL_CONTACT_INFO",
     SET_ACTIVE_CONTACT_DATA = "SET_ACTIVE_CONTACT_DATA",
     SET_MESSAGES = "SET_MESSAGES",
-    SET_CONTACTS = "SET_CONTACTS"
+    SET_CONTACTS = "SET_CONTACTS",
 }
 
 export type TActionChat = 
-| {type: TypeAction.SET_ACTIVE_CONTACT_DATA ; payload : TContactData | null}
-| {type: TypeAction.SET_CONTACTS; payload : []|TContactData[]}
-| {type: TypeAction.SET_MESSAGES; payload : []|TMessageData[]}
+| {type: "SET_ACTIVE_CONTACT_DATA" ; payload : TContactData | null}
+| {type: "SET_CONTACTS"; payload : []|TContactData[]}
+| {type: "SET_MESSAGES"; payload : []|TMessageData[]}
+| {type: "SET_MODAL_CONTACT_INFO"; payload: boolean}
 
 //---------------------------------Type Redux toolkit------------------------------//
 export interface TThunkApi{
