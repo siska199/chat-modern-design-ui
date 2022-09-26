@@ -95,6 +95,7 @@ export interface TUserData {
     status : "online" | "offline"
     createdAt? : string
     updatedAt? : string
+    token?: string
 }
 
 export interface TContactData extends TUserData{

@@ -1,7 +1,8 @@
+import { useAppSelector } from "../redux/store";
 import React, { createContext, useReducer } from "react";
 import { IChatContextProvider, IChatContextState, TActionChat, TChatState } from "../lib/types";
 import SOCKET_EVENTS from "../lib/socketEvents";
-
+import {io} from "socket.io-client"
 const initialState : TChatState = {
     idUser : 1,
     activeContactData : null,
@@ -35,6 +36,13 @@ const reducer = (state :TChatState,action:TActionChat) : TChatState=>{
 
 export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})=>{
     const [state, dispatch] = useReducer<React.Reducer<TChatState,TActionChat>>(reducer, initialState)
+    const user = useAppSelector(state=>state.auths.user)
+    const socket = io(process.env.REACT_BEURL as string,{
+        auth : {
+            token : user?.token || localStorage.getItem("token")
+        }
+    })
+
     return(
         <ChatContext.Provider value={{state, dispatch}}>
             {children}
