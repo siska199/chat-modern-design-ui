@@ -3,6 +3,7 @@ import Icon from "../atoms/Icon"
 import SumContactInfo from "../atoms/SumContactInfo"
 import ChatContext from "../context/ChatContext"
 import { contactActive, iconsHeaderMessagesBox } from "../lib/data"
+import { TypeAction } from "../lib/types"
 
 const HeaderMessagesBox = () => {
   const {image,username,status} = contactActive
@@ -11,7 +12,7 @@ const HeaderMessagesBox = () => {
   const handleShowContactInfo = ()=>{
     console.log("test")
     dispatch({
-      type : "SET_MODAL_CONTACT_INFO",
+      type : TypeAction.SET_MODAL_CONTACT_INFO,
       payload : true
     })
   }

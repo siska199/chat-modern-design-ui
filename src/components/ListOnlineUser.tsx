@@ -47,7 +47,7 @@ const ListOnlineUser = () => {
                 
             </span>
         </div>
-        <div className="container-cou scrollbar-hidden flex mx-auto md:mx-0 max-w-[20rem] md:max-w-[26rem] overflow-x-hidden scrollbar-online my-[2rem] scroll-smooth">
+        <div className="container-cou scrollbar-hidden flex mx-auto md:mx-0 max-w-[20rem] md:max-w-[26rem] overflow-x-hidden scrollbar-online my-4 md:my-[2rem] scroll-smooth">
             {
                 contacts.map((data,i)=>(
                     <div key={i} className="flex flex-col gap-3 cou px-2">

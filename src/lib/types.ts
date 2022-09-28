@@ -146,10 +146,10 @@ export enum TypeAction {
 }
 
 export type TActionChat = 
-| {type: "SET_ACTIVE_CONTACT_DATA" ; payload : TContactData | null}
-| {type: "SET_CONTACTS"; payload : []|TContactData[]}
-| {type: "SET_MESSAGES"; payload : []|TMessageData[]}
-| {type: "SET_MODAL_CONTACT_INFO"; payload: boolean}
+| {type: TypeAction.SET_ACTIVE_CONTACT_DATA; payload : TContactData | null}
+| {type: TypeAction.SET_CONTACTS; payload : []|TContactData[]}
+| {type: TypeAction.SET_MESSAGES; payload : []|TMessageData[]}
+| {type: TypeAction.SET_MODAL_CONTACT_INFO; payload: boolean}
 
 //---------------------------------Type Redux toolkit------------------------------//
 export interface TThunkApi{

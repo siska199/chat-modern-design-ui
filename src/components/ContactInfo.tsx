@@ -4,13 +4,14 @@ import Icon from '../atoms/Icon'
 import { contactActive } from '../lib/data'
 import { useContext } from "react"
 import ChatContext from "../context/ChatContext"
+import { TypeAction } from "../lib/types"
 
 const ContactInfo = () => {
   const {image, username, info, status, fullname} = contactActive
   const {state:{modalContactInfo}, dispatch} = useContext(ChatContext)
   const handleCloseContactInfo = ()=>{
     dispatch({
-      type : "SET_MODAL_CONTACT_INFO",
+      type : TypeAction.SET_MODAL_CONTACT_INFO,
       payload: false
     })
   }

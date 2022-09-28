@@ -1,6 +1,6 @@
 import { useAppSelector } from "../redux/store";
 import React, { createContext, useReducer } from "react";
-import { IChatContextProvider, IChatContextState, TActionChat, TChatState } from "../lib/types";
+import { IChatContextProvider, IChatContextState, TActionChat, TChatState, TypeAction } from "../lib/types";
 import SOCKET_EVENTS from "../lib/socketEvents";
 import {io} from "socket.io-client"
 const initialState : TChatState = {
@@ -19,15 +19,15 @@ const ChatContext = createContext<IChatContextState>({
 
 const reducer = (state :TChatState,action:TActionChat) : TChatState=>{
     switch(action.type){
-        case "SET_CONTACTS":
+        case TypeAction.SET_CONTACTS:
             state = {...state, contacts: action.payload}
             return state
-        case "SET_ACTIVE_CONTACT_DATA":
+        case TypeAction.SET_ACTIVE_CONTACT_DATA:
             return {...state, activeContactData : action.payload}
-        case "SET_MODAL_CONTACT_INFO" : 
+        case TypeAction.SET_MODAL_CONTACT_INFO : 
             console.log(action.payload)
             return {...state, modalContactInfo : action.payload}
-        case  "SET_MESSAGES":
+        case  TypeAction.SET_MESSAGES:
             return {...state, messages : action.payload}
         default:
             return {...state}
@@ -44,7 +44,7 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
     })
 
     return(
-        <ChatContext.Provider value={{state, dispatch}}>
+        <ChatContext.Provider value={{state, dispatch,}}>
             {children}
         </ChatContext.Provider>
     )
