@@ -19,11 +19,7 @@ const Avatar :React.FC<TAvatarProps>=(props) =>{
   return (
     <div className="relative">
       <img onClick={()=>handleOnClickImage&&handleOnClickImage()} src={url} className={`${size} rounded-full cursor-pointer`} alt=""/>
-      {
-        online && (
-          <div className="absolute right-0 top-0 w-3 h-3 border-[0.1rem] border-cd800 rounded-full bg-main"></div>
-        )
-      }
+      <div className={`absolute right-0 top-0 w-3 h-3 border-[0.1rem] border-cd800 rounded-full ${online?"bg-main":"bg-white"} `}></div>
     </div>
   )
 }

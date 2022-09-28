@@ -2,11 +2,11 @@ import {useContext} from "react"
 import Icon from "../atoms/Icon"
 import SumContactInfo from "../atoms/SumContactInfo"
 import ChatContext from "../context/ChatContext"
-import { contactActive, iconsHeaderMessagesBox } from "../lib/data"
+import { iconsHeaderMessagesBox } from "../lib/data"
 import { TypeAction } from "../lib/types"
 
 const HeaderMessagesBox = () => {
-  const {image,username,status} = contactActive
+  const {state:{activeContactData:data}} = useContext(ChatContext)
   const { dispatch} = useContext(ChatContext)
   console.log("dispatch: ", dispatch)
   const handleShowContactInfo = ()=>{
@@ -18,16 +18,23 @@ const HeaderMessagesBox = () => {
   }
 
   return(
-    <div className="px-7 header">
-      <SumContactInfo handleOnClickImage={handleShowContactInfo} type="contact" image={image} username={username} info={status} /> 
-      <div className="flex gap-4">
+    <>    
       {
-        iconsHeaderMessagesBox.map((data,i)=>(
-          <Icon icon={data.icon} key={i} handleOnClickIcon={data.onClick}/>
-        ))
+        data && (
+          <div className="px-7 header">
+            <SumContactInfo status={data.status} handleOnClickImage={handleShowContactInfo} type="contact" image={data.image} username={data.username} info={data.status} /> 
+            <div className="flex gap-4">
+            {
+              iconsHeaderMessagesBox.map((data,i)=>(
+                <Icon icon={data.icon} key={i} handleOnClickIcon={data.onClick}/>
+              ))
+            }
+            </div>
+          </div>
+
+        )
       }
-      </div>
-    </div>
+    </>
   )
 }
 

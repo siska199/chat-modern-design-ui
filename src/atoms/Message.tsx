@@ -1,11 +1,11 @@
 import React from 'react'
-import { user } from '../lib/data'
+import { getFormatDate } from '../lib/helperFunction'
 import {TMessageData } from '../lib/types'
+import { useAppSelector } from '../redux/store'
 
 const Message:React.FC<TMessageData> = (props) => {
-  const {id} = user
+  const id = useAppSelector(state=>state.auths.user?.id)
   const {idSender,text, createdAt, read} = props
-
   const sender = id===idSender?true:false
 
   const stylesReadIndikator = `w-3 h-3 rounded-full ${read?"bg-sky-800":"bg-white"} `
@@ -20,7 +20,7 @@ const Message:React.FC<TMessageData> = (props) => {
               <div className={stylesReadIndikator}></div>
           </div> 
           }
-          {createdAt}
+          {getFormatDate(createdAt)}
         </div>
       </div>
     </div>

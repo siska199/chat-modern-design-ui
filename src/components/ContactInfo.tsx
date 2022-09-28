@@ -16,7 +16,7 @@ const ContactInfo = () => {
     })
   }
   return (
-    <article className={`w-0 ${modalContactInfo&&"w-[22rem]"} border-l-[0.005rem] border-cd600 transition-shortcut`}>
+    <article className={`w-0 ${modalContactInfo&&"w-[22rem]"} border-l-[0.005rem] border-cd600 transition-shortcut-fast `}>
         <header className='header px-3'>
           <h1 className='font-medium text-lg'>&#127802; Info Contact</h1>
           <Icon icon={<IoCloseOutline/>} handleOnClickIcon={handleCloseContactInfo}/>

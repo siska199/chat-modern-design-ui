@@ -101,7 +101,7 @@ export const contacts : TContactData[] = [
         createdAt: "12:00 PM"
     },
     status : "offline",
-    countNotif : 4,
+    notif : 4,
 }))
 
 export const messages:TMessageData[] = [

@@ -3,8 +3,17 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      keyframes: {
+        contactInfo: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
+      animation: {
+        contactInfo: "contactInfo 0.5s ease-in-out",
+      },
       screens: {
-        xs : "480px",
+        xs: "480px",
         sm: "576px",
         md: "768px",
         lg: "992px",

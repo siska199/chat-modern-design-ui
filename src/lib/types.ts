@@ -1,6 +1,7 @@
 import { RootState } from './../redux/store';
 import React from "react"
 import { AppDispatch } from "../redux/store"
+import { Socket } from 'socket.io-client';
 
 //--------------------------------------------COMPONENT-------------------------------------------------//
 
@@ -25,6 +26,7 @@ export interface TSumContactInfoProps {
     username : string
     info : string
     type : string
+    status?:string
     handleOnClickImage? : ()=>void
 } 
 //-----atoms/Icon.tsx-----//
@@ -102,8 +104,8 @@ export interface TContactData extends TUserData{
     lastMessage : {
         text : string
         createdAt : string
-    }
-    countNotif : number
+    } | undefined
+    notif : number
 }
 
 export interface TMessageData{
@@ -125,6 +127,7 @@ export interface TMessageData{
 export interface IChatContextState{ 
     state: TChatState
     dispatch: React.Dispatch<TActionChat>
+    socket : Socket | null
 }
 
 export interface IChatContextProvider {

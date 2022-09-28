@@ -78,10 +78,8 @@ const handleRegister = createAsyncThunk<TPayloadAuth,TFormAuth,{}>("auths/regist
 
 const handleGetProfileData = createAsyncThunk<TPayloadAuth,void,{}>("auths/profileData", async()=>{
     try {
-        console.log("masokkkk")
         setAuthToken(localStorage.getItem('token') as string)
         const dataUser = await API.get(API_ENDPOINTS.USER);
-        console.log("datauser: ", dataUser)
         return {
           user: dataUser.data.data,
           error : null
@@ -107,6 +105,30 @@ const handleLogout = createAsyncThunk<{},undefined,{}>("profile/Logout", async (
     }
   });
 
+export enum TKeyFormUpdateProfile {
+    USERNAME = "username",
+    FULLNAME = "fullname",
+    INFO = "info"
+}
+export type TFormUpdateProfile = {[key:string]:string}
+
+const handleUpdateProfile = createAsyncThunk<{},TFormUpdateProfile,{}>(
+    "profile/updateProfile",
+    async (form) => {
+      try {
+        await API.patch(API_ENDPOINTS.USER, form, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        return {};
+      } catch (error:any) {
+        return {
+          error: error.response.data.message,
+        };
+      }
+    }
+  );
 
 
 const authSlice = createSlice({
@@ -122,7 +144,7 @@ const authSlice = createSlice({
         builder.addCase(handleLogin.pending,(state,action)=>{
             state.loading = true
         })
-        builder.addCase(handleLogin.fulfilled,(state,action:PayloadAction<TPayloadAuth>)=>{
+        builder.addCase(handleLogin.fulfilled,(state,action)=>{
             state.error = action.payload.error
             state.user = action.payload.user
             state.loading = false  
@@ -134,7 +156,7 @@ const authSlice = createSlice({
         builder.addCase(handleRegister.pending,(state,action)=>{
             state.loading = true
         })
-        builder.addCase(handleRegister.fulfilled,(state,action:PayloadAction<TPayloadAuth>)=>{
+        builder.addCase(handleRegister.fulfilled,(state,action)=>{
             state.error = action.payload.error
             state.user = action.payload.user
             state.loading = false  
@@ -146,7 +168,7 @@ const authSlice = createSlice({
         builder.addCase(handleGetProfileData.pending,(state,action)=>{
             state.loading = true
         })
-        builder.addCase(handleGetProfileData.fulfilled,(state,action:PayloadAction<TPayloadAuth>)=>{
+        builder.addCase(handleGetProfileData.fulfilled,(state,action)=>{
             console.log(action.payload)
             state.error = action.payload.error
             state.user = action.payload.user
@@ -159,7 +181,7 @@ const authSlice = createSlice({
         builder.addCase(handleLogout.pending,(state,action)=>{
             state.loading = true
         })
-        builder.addCase(handleLogout.fulfilled,(state,action:PayloadAction<{}>)=>{
+        builder.addCase(handleLogout.fulfilled,(state,action)=>{
             state.error = null
             state.user = null
             state.loading = false  
@@ -168,9 +190,18 @@ const authSlice = createSlice({
             state.loading = false
         })
         //-----------------
+        builder.addCase(handleUpdateProfile.pending,(state,action)=>{
+            state.loading = true
+        })
+        builder.addCase(handleUpdateProfile.fulfilled,(state,action)=>{
+            state.loading = false  
+        })
+        builder.addCase(handleUpdateProfile.rejected,(state,action)=>{
+            state.loading = false
+        })
     }
 })
 
 export default authSlice.reducer
 export const {handleModalProfile} = authSlice.actions
-export {handleLogin, handleRegister,handleGetProfileData,handleLogout}
+export {handleLogin, handleRegister,handleGetProfileData,handleLogout, handleUpdateProfile}
