@@ -48,12 +48,12 @@ const ListOnlineUser = () => {
                 
             </span>
         </div>
-        <div className="container-cou scrollbar-hidden flex mx-auto md:mx-0 max-w-[20rem] md:max-w-[26rem] overflow-x-hidden scrollbar-online my-4 md:my-[2rem] scroll-smooth">
+        <div className="container-cou scrollbar-hidden flex  max-w-[20rem] md:max-w-[26rem] overflow-x-hidden scrollbar-online my-4 md:my-[2rem] scroll-smooth">
             {
                 contactsOnline?.map((data,i)=>(
                     <div key={i} className="flex flex-col gap-3 cou px-2">
                         <Avatar online={true} sizeType="medium"  url={data.image}/>
-                        <p className="max-w-[3rem] text-[0.7rem] text-cd500 font-thin">{data.username}</p>
+                        <p className="max-w-[3rem] text-[0.7rem] text-center text-cd500 font-thin">{data.username}</p>
                     </div>
                 ))
             }

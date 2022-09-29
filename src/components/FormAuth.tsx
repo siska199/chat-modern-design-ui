@@ -1,15 +1,19 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import {useNavigate} from "react-router-dom"
 import Input from '../atoms/Input'
 import Loading from "../atoms/Loading"
+import ChatContext from "../context/ChatContext"
 import { inputsFormAuth } from "../lib/data"
 import { Alert } from "../lib/helperFunction"
+import SOCKET_EVENTS from "../lib/socketEvents"
 import { TFormAuth } from "../lib/types"
 import { handleLogin, handleRegister } from "../redux/features/authSlice"
 import { useAppDispatch } from "../redux/store"
 const FormAuth = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+    const {socket} = useContext(ChatContext)
+
     const initialForm : TFormAuth = {
         fullname : "",
         username : "",
@@ -18,8 +22,7 @@ const FormAuth = () => {
     const [form, setForm] = useState(initialForm)
     const [type, setType] = useState<"Log In" | "Register">("Log In")
     const [loading, setLoading] = useState(false)
-
-
+    
     const handleSubmit = (e: React.SyntheticEvent)=>{
         e.preventDefault()
         const inputsInvalid = document.querySelectorAll('input.input-auth:invalid,input[value=""].input-auth')
@@ -36,7 +39,8 @@ const FormAuth = () => {
                setLoading(false)
                if(state.payload.error){
                    Alert("error",state.payload.error)
-               }else{
+                }else{
+
                    setTimeout(()=>{
                        navigate("/chat-home")
                        Alert("success",type==="Log In"?"Log in Success":"Register Success")

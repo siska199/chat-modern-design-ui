@@ -8,7 +8,8 @@ const ListContact = () => {
   const id = useAppSelector(state=>state.auths.user?.id)
   const {socket, state: {contacts}} = useContext(ChatContext)
   useEffect(()=>{
-    socket?.emit(SOCKET_EVENTS.LOAD_CONTACTS,id)
+    // console.log("contacts: ", socket)
+    // socket?.emit(SOCKET_EVENTS.LOAD_CONTACTS,id)
   },[])
 
   const handleContactActive= (idContact:string)=>{

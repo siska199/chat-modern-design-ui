@@ -1,9 +1,11 @@
 import {useContext} from "react"
+import {AiOutlineArrowRight} from 'react-icons/ai'
 import Icon from "../atoms/Icon"
 import SumContactInfo from "../atoms/SumContactInfo"
 import ChatContext from "../context/ChatContext"
 import { iconsHeaderMessagesBox } from "../lib/data"
 import { TypeAction } from "../lib/types"
+
 
 const HeaderMessagesBox = () => {
   const {state:{activeContactData:data}} = useContext(ChatContext)
@@ -16,7 +18,12 @@ const HeaderMessagesBox = () => {
       payload : true
     })
   }
-
+  const handleBack = ()=>{
+    dispatch({
+      type : TypeAction.SET_ACTIVE_CONTACT_DATA,
+      payload : null
+    })
+  }
   return(
     <>    
       {
@@ -29,6 +36,7 @@ const HeaderMessagesBox = () => {
                 <Icon icon={data.icon} key={i} handleOnClickIcon={data.onClick}/>
               ))
             }
+            <Icon icon={<AiOutlineArrowRight/>} customeClass={"md:hidden"} handleOnClickIcon={()=>handleBack()}/>
             </div>
           </div>
 

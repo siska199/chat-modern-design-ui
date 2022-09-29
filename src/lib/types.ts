@@ -34,6 +34,7 @@ export interface TIconProps{
     icon: JSX.Element
     handleOnClickIcon: ()=>void
     type?: string
+    customeClass? : string
 }
 //------atoms/Contact.tsx-----//
 export interface TContactPorps{

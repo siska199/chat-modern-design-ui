@@ -7,18 +7,21 @@ import Icon from "../atoms/Icon"
 import ChatContext from "../context/ChatContext"
 import { useAppSelector } from "../redux/store"
 import SOCKET_EVENTS from "../lib/socketEvents"
+import { getFormatDay } from "../lib/helperFunction"
 
 const AddMessage = () => {
   const idSender = useAppSelector(state=>state.auths.user?.id)
   const {socket, state:{activeContactData}} = useContext(ChatContext)
   const [value, setValue] = useState("")
   const handleSubmitMessage = (e:React.KeyboardEvent<HTMLInputElement>)=>{
-
+    
+    const currentDate = new Date()
     if(e.code==="Enter" && value!==""){
       const form = {
         idSender : idSender,
         idReceiver : activeContactData?.id,
-        text:value
+        text:value,
+        day: getFormatDay(currentDate.toString())
       }
       console.log("form add message",form)
       socket?.emit(SOCKET_EVENTS.SEND_MESSAGE,form)

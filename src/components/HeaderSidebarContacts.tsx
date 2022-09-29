@@ -20,7 +20,7 @@ const HeaderSidebarContacts = () => {
           <div className='header  px-3 py-7 '>
             <SumContactInfo status={user.status} handleOnClickImage={handleShowProfile} type="user-info" image={user.image} username={user.username} info={"My Account"} />
             <div className='relative'>
-              <Icon type={activeDropdown?"with-bg":""} icon={<BiDotsVerticalRounded/>} handleOnClickIcon={()=>setActiveDropdown(activeDropdown?false:true)}/>
+              <Icon customeClass={`hover:bg-cd700 ${activeDropdown&&"bg-cd700"} w-[2.2rem] h-[2.2rem]`} icon={<BiDotsVerticalRounded/>} handleOnClickIcon={()=>setActiveDropdown(activeDropdown?false:true)}/>
               {
                 activeDropdown &&(
                   <MenuUserSetting/> 

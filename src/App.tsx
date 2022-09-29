@@ -1,4 +1,4 @@
-import {useEffect} from "react"
+import {useEffect,} from "react"
 import Auth from "./pages/Auth";
 import Chat from "./pages/Chat";
 import {Routes,Route} from "react-router-dom"
@@ -8,12 +8,14 @@ import { handleGetProfileData } from "./redux/features/authSlice";
 function App() {
   const user = useAppSelector(state=>state.auths.user)
   const dispatch = useAppDispatch()
+
   useEffect(()=>{
     const token = localStorage.getItem("token")
     token && dispatch(handleGetProfileData())
     const html = document.querySelector("html")
     html?.classList.add("dark")
   },[])
+
 
   return (
     <>

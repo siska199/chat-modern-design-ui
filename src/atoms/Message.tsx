@@ -1,5 +1,5 @@
 import React from 'react'
-import { getFormatDate } from '../lib/helperFunction'
+import { getFormatTime } from '../lib/helperFunction'
 import {TMessageData } from '../lib/types'
 import { useAppSelector } from '../redux/store'
 
@@ -20,7 +20,7 @@ const Message:React.FC<TMessageData> = (props) => {
               <div className={stylesReadIndikator}></div>
           </div> 
           }
-          {getFormatDate(createdAt)}
+          {getFormatTime(createdAt)}
         </div>
       </div>
     </div>

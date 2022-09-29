@@ -43,7 +43,7 @@ export const handleUploadImageToCloudinary = async (image:File) => {
     return dataImage.secure_url;
   };
   
-  export const getFormatDate = (date:string) => {
+  export const getFormatTime = (date:string) => {
     const dateNew = new Date(date);
     const stringHours = String(dateNew.getHours());
     const stringMinutes = String(dateNew.getMinutes());
@@ -54,9 +54,10 @@ export const handleUploadImageToCloudinary = async (image:File) => {
     return dateNewFormat;
   };
   
+
   export const formatDateForSumContactInfo = (date:string) => {
     const day = moment(date).calendar().split(" ")[0];
-    const time = getFormatDate(date);
+    const time = getFormatTime(date);
     if (day === "Today") {
       return time;
     } else if (day === "Tomorrow") {
@@ -65,4 +66,9 @@ export const handleUploadImageToCloudinary = async (image:File) => {
       return moment(date).calendar("L");
     }
   };
+
+export const getFormatDay = (date:string)=>{ //dd/mm/yyyy
+  const newFormatDate = moment(date).format("L")
+  return newFormatDate
+}
   

@@ -1,5 +1,5 @@
 import { useAppSelector } from "../redux/store";
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import { IChatContextProvider, IChatContextState, TActionChat, TChatState, TypeAction } from "../lib/types";
 import SOCKET_EVENTS from "../lib/socketEvents";
 import {io, Socket} from "socket.io-client"
@@ -43,6 +43,12 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
             token : user?.token || localStorage.getItem("token")
         }
     })
+
+    useEffect(()=>{
+        console.log("user changes:", socket)
+        socket.emit(SOCKET_EVENTS.USER_IN_OUT)
+    },[user])
+
     socket.off(SOCKET_EVENTS.CONTACTS).on(SOCKET_EVENTS.CONTACTS,(dataContacts)=>{
         dispatch({
             type : TypeAction.SET_CONTACTS,
