@@ -67,7 +67,6 @@ const handleRegister = createAsyncThunk<TPayloadAuth,TFormAuth,{}>("auths/regist
             error : null
         }
     } catch (error : any) {
-        console.log(error.response.data.message)
         return {
             error : error.response.data.message,
             user : null
@@ -85,7 +84,6 @@ const handleGetProfileData = createAsyncThunk<TPayloadAuth,void,{}>("auths/profi
           error : null
         };
     } catch (error : any) {
-        console.log(error)
         return {
             user : null,
             error: error.response.data.message,
@@ -169,7 +167,6 @@ const authSlice = createSlice({
             state.loading = true
         })
         builder.addCase(handleGetProfileData.fulfilled,(state,action)=>{
-            console.log(action.payload)
             state.error = action.payload.error
             state.user = action.payload.user
             state.loading = false  

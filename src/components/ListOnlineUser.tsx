@@ -14,9 +14,7 @@ const ListOnlineUser = () => {
     const {state:{contacts}} = useContext(ChatContext)
     const contactsOnline = contacts.filter(contact=>contact.status ==="online")
     const handleScroll = ()=>{
-        console.log("typescroll: ", typeScroll)
         if(typeScroll==="right"){
-            console.log("rifht")
             containerCOU.scrollLeft += (cou.offsetWidth+18)*(count*5)
         }else{
             containerCOU.scrollLeft -= (cou.offsetWidth+18)*(count*5)
@@ -26,8 +24,6 @@ const ListOnlineUser = () => {
         })
 
         setTypeScroll(prev=>{
-            console.log(containerCOU.scrollLeft+containerCOU.offsetWidth)
-            console.log(containerCOU.scrollWidth)
             return containerCOU.scrollLeft+containerCOU.offsetWidth === containerCOU.scrollWidth ? "left":"right"
         })
 

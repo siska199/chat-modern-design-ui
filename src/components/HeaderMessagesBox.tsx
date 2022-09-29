@@ -10,9 +10,7 @@ import { TypeAction } from "../lib/types"
 const HeaderMessagesBox = () => {
   const {state:{activeContactData:data}} = useContext(ChatContext)
   const { dispatch} = useContext(ChatContext)
-  console.log("dispatch: ", dispatch)
   const handleShowContactInfo = ()=>{
-    console.log("test")
     dispatch({
       type : TypeAction.SET_MODAL_CONTACT_INFO,
       payload : true

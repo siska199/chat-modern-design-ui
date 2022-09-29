@@ -45,7 +45,6 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
     })
 
     useEffect(()=>{
-        console.log("user changes:", socket)
         socket.emit(SOCKET_EVENTS.USER_IN_OUT)
     },[user])
 
@@ -62,7 +61,6 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
         })
     })
     socket.off(SOCKET_EVENTS.MESSAGES).on(SOCKET_EVENTS.MESSAGES,(dataMessages)=>{
-        console.log("get messages: ", dataMessages)
         dispatch({
             type:TypeAction.SET_MESSAGES,
             payload : dataMessages

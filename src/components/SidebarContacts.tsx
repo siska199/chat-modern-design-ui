@@ -8,7 +8,6 @@ import ChatContext from '../context/ChatContext'
 
 const SidebarContacts = () => {
   const {state:{activeContactData}} = useContext(ChatContext)
-  console.log("active contact data: ", activeContactData)
   return (
     <section className={`w-full ${activeContactData&&"hidden md:flex "} md:w-[22rem]  pr-[1rem]  xs:pr-0 relative flex flex-col border-cd700 bg-cd800 border-r-[0.005rem]`}>
       <>
