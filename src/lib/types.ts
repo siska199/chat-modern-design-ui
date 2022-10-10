@@ -12,6 +12,7 @@ export interface TPageProps {
 //-----layouts/Modal.tsx---------//
 export interface TModalProps {
     children : React.ReactNode
+    styles? : string
 }
 //-----atoms/Avatar.tsx------//
 export interface TAvatarProps {

@@ -2,7 +2,7 @@ import Icon from '../atoms/Icon'
 import {IoCloseOutline} from "react-icons/io5"
 import ProfileInfo from '../atoms/ProfileInfo'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { handleModalProfile, TKeyFormUpdateProfile } from '../redux/features/authSlice'
+import { handleModalProfile,handleModalChangeImage, TKeyFormUpdateProfile } from '../redux/features/authSlice'
 
 const Profile = () => {
   const dispatch = useAppDispatch()
@@ -21,7 +21,7 @@ const Profile = () => {
             <Icon icon={<IoCloseOutline/>} handleOnClickIcon={handleCloseProfile} />
           </header>
           <section className='flex flex-col'>
-            <div className='mx-auto my-7 relative change-profile'>
+            <div onClick={()=>dispatch(handleModalChangeImage(true))} className='mx-auto my-7 relative change-profile'>
               <img src={user.image} alt="" className='avatar-big '/>
             </div>
             <div className='my-5 flex flex-col gap-10 px-5'>

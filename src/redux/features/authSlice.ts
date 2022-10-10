@@ -1,12 +1,13 @@
 import { setAuthToken } from './../../lib/apiConfig';
 import { TFormAuth, TUserData, } from './../../lib/types';
-import {createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit"
+import {createSlice, createAsyncThunk,} from "@reduxjs/toolkit"
 import API from '../../lib/apiConfig';
 import API_ENDPOINTS from '../../lib/apiEndpoints';
 
 export interface TAuthState{
     user : TUserData | null
     modalProfile : boolean
+    modalChangeImage : boolean
     loading : boolean
     error : string | null
 }
@@ -18,6 +19,7 @@ export interface TPayloadAuth {
 const initialState : TAuthState ={
     user : null,
     modalProfile : false,
+    modalChangeImage: false,
     loading : false,
     error : null
 }
@@ -135,6 +137,9 @@ const authSlice = createSlice({
     reducers : {
         handleModalProfile : (state, action)=>{
             state.modalProfile = action.payload
+        },
+        handleModalChangeImage : (state, action)=>{
+            state.modalChangeImage = action.payload
         }
     },
     extraReducers :(builder)=> {
@@ -200,5 +205,5 @@ const authSlice = createSlice({
 })
 
 export default authSlice.reducer
-export const {handleModalProfile} = authSlice.actions
+export const {handleModalProfile,handleModalChangeImage} = authSlice.actions
 export {handleLogin, handleRegister,handleGetProfileData,handleLogout, handleUpdateProfile}

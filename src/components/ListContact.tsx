@@ -11,6 +11,7 @@ const ListContact = () => {
     socket?.emit(SOCKET_EVENTS.LOAD_ACTIVE_CONTACT,idContact)
     socket?.emit(SOCKET_EVENTS.LOAD_MESSAGES,idContact)
   }
+  
   return (
     <div className='h-full overflow-y-scroll scrollbar-hidden'>
       <h1 className='px-3 font-medium pb-4 sticky top-0 bg-cd800 z-[20] '>Messages</h1>
