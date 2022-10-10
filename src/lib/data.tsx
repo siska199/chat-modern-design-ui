@@ -19,7 +19,7 @@ export const contactsAvatar = [
 
 export const iconsMenuSidebar : TIconMenuSidebarData[]  = [
     {
-        name : "messages",
+        name : "chats",
         active : <RiMessage2Fill/>,
         inActive : <RiMessage2Line/>
     },
@@ -29,7 +29,7 @@ export const iconsMenuSidebar : TIconMenuSidebarData[]  = [
         inActive : <BsPeople/>
     },
     {
-        name : "telephones",
+        name : "history-telephones",
         active : <BsTelephoneFill/>,
         inActive : <BsTelephone/>,
     },{

@@ -10,7 +10,6 @@ const Chat = () => {
   const modalChangeImage = useAppSelector(state=>state.auths.modalChangeImage )
   return (
     <Page>
-        <SidebarMenu/>
         <SidebarContacts/>
         <MessagesBox/>
         <ContactInfo/>

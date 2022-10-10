@@ -110,6 +110,7 @@ export enum TKeyFormUpdateProfile {
     FULLNAME = "fullname",
     INFO = "info"
 }
+
 export type TFormUpdateProfile = {[key:string]:string}
 
 const handleUpdateProfile = createAsyncThunk<{},TFormUpdateProfile,{}>(

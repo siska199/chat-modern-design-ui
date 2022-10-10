@@ -1,6 +1,7 @@
 import {useState, useRef,ChangeEvent} from "react"
 import {IoCloseOutline} from "react-icons/io5"
 import Icon from '../atoms/Icon'
+import Loading from "../atoms/Loading"
 import Modal from '../layouts/Modal'
 import { handleUploadImageToCloudinary } from "../lib/helperFunction"
 import { handleGetProfileData, handleModalChangeImage, handleUpdateProfile,TFormUpdateProfile  } from "../redux/features/authSlice"
@@ -11,9 +12,9 @@ const ChangeProfile = () => {
   const imageRef = useRef<HTMLInputElement | null>(null)
   const [imageURL, setImageURL] = useState<string | null>(null)
   const [file, setFile] = useState<File | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const handleOnChangeImage = (e:ChangeEvent<HTMLInputElement>)=>{
-    console.log(e.target.files)
     if(e.target.files){
       setFile(e.target.files[0])
       const url = URL.createObjectURL(new Blob([e.target.files[0]]))
@@ -24,11 +25,13 @@ const ChangeProfile = () => {
     if(type ==="upload"){
       imageRef?.current?.click()
     }else{
+      setLoading(true)
       const urlImage = file && await handleUploadImageToCloudinary(file) 
       const form: TFormUpdateProfile = {image :urlImage}
       await dispatch(handleUpdateProfile(form))
       await dispatch(handleGetProfileData())
       dispatch(handleModalChangeImage(false))
+      setLoading(false)
     }
   }
   return (
@@ -47,7 +50,7 @@ const ChangeProfile = () => {
                 </>
               )
             }
-            <button onClick={()=>handleClickButton(imageURL?"save":"upload")} className="m-auto text-sm bg-cd700 px-5 py-2 font-bold hover:scale-[1.1]">{imageURL?"Save Photo":"Upload Photo"} </button> 
+            <button onClick={()=>handleClickButton(imageURL?"save":"upload")} className="m-auto text-sm bg-cd700 px-5 py-2 font-bold hover:scale-[1.1]">{imageURL?"Save Photo" :"Upload Photo"} {loading && <Loading type="loading" size="w-5 h-5"/>}</button> 
             <input onChange={(e)=>handleOnChangeImage(e)} ref={imageRef} type="file" accept="image/*" hidden/>
           </section>
         </article>

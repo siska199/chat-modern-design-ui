@@ -15,9 +15,11 @@ const MessagesBox = () => {
         activeContactData?(
           <>
               <HeaderMessagesBox/>
-              <ListMessage/>
-              <AddMessage/>
-              </>
+              <div className='relative h-full'>
+                <ListMessage/>
+                <AddMessage/>
+              </div>
+          </>
           ):(
             <div className='m-auto'>
               <h1 className='text-center font-thin text-[1.5rem] lg:text-[2.5rem]'>Buil Your Connection With <br/> Chat Hello 199</h1>

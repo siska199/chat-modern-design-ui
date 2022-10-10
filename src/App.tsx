@@ -24,10 +24,12 @@ function App() {
         {
           user ?(
             <>
-              <Route path="/chat-home" element={<Chat/>} />
+              <Route path="/chats" element={<Chat/>} />
             </>
           ):(
-            <Route path="/" element={<Auth/>} />
+            <>
+              <Route path="/" element={<Auth/>} />
+            </>
           )
         }
         <Route path="*" element={<NotFound/>}/>

@@ -4,7 +4,7 @@ const NotFound = () => {
   return (
     <Page>
       <article className="flex justify-center items-center mx-auto">
-        <img className="w-[50rem] h-[50rem]" src={notFound} alt="" />
+        <img className="w-[30rem] h-[30rem]" src={notFound} alt="" />
       </article>
     </Page>
   );

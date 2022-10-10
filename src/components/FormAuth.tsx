@@ -2,17 +2,14 @@ import React, {useState, useContext} from "react"
 import {useNavigate} from "react-router-dom"
 import Input from '../atoms/Input'
 import Loading from "../atoms/Loading"
-import ChatContext from "../context/ChatContext"
 import { inputsFormAuth } from "../lib/data"
 import { Alert } from "../lib/helperFunction"
-import SOCKET_EVENTS from "../lib/socketEvents"
 import { TFormAuth } from "../lib/types"
 import { handleLogin, handleRegister } from "../redux/features/authSlice"
 import { useAppDispatch } from "../redux/store"
 const FormAuth = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-    const {socket} = useContext(ChatContext)
 
     const initialForm : TFormAuth = {
         fullname : "",
@@ -42,7 +39,7 @@ const FormAuth = () => {
                 }else{
 
                    setTimeout(()=>{
-                       navigate("/chat-home")
+                       navigate("/chats")
                        Alert("success",type==="Log In"?"Log in Success":"Register Success")
                     },500)
                }
@@ -81,7 +78,7 @@ const FormAuth = () => {
             <button onClick={(e)=>handleSubmit(e)} className="bg-gradient-to-r flex justify-center items-center gap-2 p-2 md:p-3 font-medium rounded-md from-main to-blue-600">
                 {type}
                 {loading &&                
-                    <Loading size={"w-5 h-5"}/>
+                    <Loading type="loading" size={"w-5 h-5"}/>
                 }
             </button>
             <p className="small-text text-center cursor-pointer" onClick={()=>handleTypeAuth()}>
