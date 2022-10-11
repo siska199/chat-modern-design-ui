@@ -6,8 +6,10 @@ import { Socket } from 'socket.io-client';
 //--------------------------------------------COMPONENT-------------------------------------------------//
 
 //------layouts/Page.tsx------//
+
 export interface TPageProps {
     children : React.ReactNode
+    type?:string
 }
 //-----layouts/Modal.tsx---------//
 export interface TModalProps {
