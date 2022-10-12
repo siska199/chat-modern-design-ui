@@ -1,7 +1,7 @@
 
+import bg from "../assets/bg.png"
 import FormAuth from '../components/FormAuth'
 import Page from '../layouts/Page'
-import bg from "../assets/bg.png"
 
 const Auth = () => {
   return (

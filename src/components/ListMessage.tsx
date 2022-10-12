@@ -16,7 +16,6 @@ const ListMessage = () => {
     })
   }
 
-  console.log("messages: ", messages)
   return (
     <div ref={containerMsgRef} className='pt-7 pb-10 px-7 flex flex-col overflow-y-scroll overflow-x-hidden h-[calc(100%-10rem)] gap-[2.5em] bg-cd900'>
       {

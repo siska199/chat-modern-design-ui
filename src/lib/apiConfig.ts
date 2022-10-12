@@ -1,5 +1,4 @@
 import axios from "axios";
-console.log("test masuk: ", process.env.REACT_APP_BASEURL)
 const API = axios.create({
     baseURL : process.env.REACT_APP_BASEURL
 })

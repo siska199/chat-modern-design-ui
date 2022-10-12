@@ -7,7 +7,6 @@ import imgWelcome from "../assets/bg.png"
 
 const MessagesBox = () => {
   const {state:{activeContactData}} = useContext(ChatContext)
-  console.log("active contact data: ", activeContactData)
 
   return (
     <section className={`flex-grow  ${activeContactData?"!block":"md:!flex md:flex-col"} hidden md:block overflow-y-hidden`}>

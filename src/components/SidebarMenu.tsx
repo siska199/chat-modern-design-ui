@@ -23,7 +23,6 @@ const SidebarMenu = () => {
         setActiveMenu(name)
         break;
       case "settings":
-        console.log("setting active")
         setActiveMenu(name)
         break;
       default:

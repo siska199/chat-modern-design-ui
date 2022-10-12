@@ -1,8 +1,8 @@
+import { IoCloseOutline } from "react-icons/io5"
 import Icon from '../atoms/Icon'
-import {IoCloseOutline} from "react-icons/io5"
 import ProfileInfo from '../atoms/ProfileInfo'
+import { handleModalChangeImage, handleModalProfile, TKeyFormUpdateProfile } from '../redux/features/authSlice'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { handleModalProfile,handleModalChangeImage, TKeyFormUpdateProfile } from '../redux/features/authSlice'
 
 const Profile = () => {
   const dispatch = useAppDispatch()

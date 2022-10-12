@@ -37,7 +37,6 @@ const AddMessage = () => {
         vaoice : voice,
         day: getFormatDay(currentDate.toString())
       }
-      console.log("form: ", form)
       socket?.emit(SOCKET_EVENTS.SEND_MESSAGE,form)
       setValue("")
       handleCloseImage()

@@ -69,7 +69,7 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
     socket
     .off(SOCKET_EVENTS.NEW_MESSAGE)
     .on(SOCKET_EVENTS.NEW_MESSAGE, (idReceiver) => {
-      socket.emit(SOCKET_EVENTS.LOAD_MESSAGES, idReceiver);
+      socket.emit(SOCKET_EVENTS.LOAD_MESSAGES, {idReceiver,loadContacts:true});
     });
   socket.off(SOCKET_EVENTS.RELOAD_CONTACTS).on(SOCKET_EVENTS.RELOAD_CONTACTS, () => {
     socket.emit(SOCKET_EVENTS.LOAD_CONTACTS, user?.id);
