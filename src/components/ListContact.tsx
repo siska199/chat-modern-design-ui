@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef} from "react"
+import {useContext, useEffect, useRef} from "react"
 import Contact from '../atoms/Contact'
 import ChatContext from "../context/ChatContext"
 import SOCKET_EVENTS from "../lib/socketEvents"
@@ -8,12 +8,12 @@ const ListContact = () => {
   const {socket, state: {contacts,}} = useContext(ChatContext)
 
   useEffect(()=>{
-    containerContactsRef.current && containerContactsRef.current.scroll({top: 0, behavior: 'smooth'});
-  },[contacts])
+    // containerContactsRef.current && containerContactsRef.current.scroll({top: 0, behavior: 'smooth'});
+  },[contacts,])
 
   const handleContactActive= (idContact:string)=>{
     socket?.emit(SOCKET_EVENTS.LOAD_ACTIVE_CONTACT,idContact)
-    socket?.emit(SOCKET_EVENTS.LOAD_MESSAGES,{idReceiver : idContact, loadContacts: false})
+    socket?.emit(SOCKET_EVENTS.LOAD_MESSAGES,{idReceiver : idContact, loadContacts: true})
   }
   
   return (

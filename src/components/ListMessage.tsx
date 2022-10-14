@@ -9,6 +9,7 @@ const ListMessage = () => {
   useEffect(()=>{
     containerMsgRef.current && scrollToBottom()
   },[messages])
+  
   const scrollToBottom = ()=>{
     containerMsgRef?.current?.scroll({
       top : containerMsgRef?.current?.scrollHeight,

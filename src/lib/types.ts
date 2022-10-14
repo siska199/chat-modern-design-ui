@@ -144,12 +144,14 @@ export interface TChatState {
     messages : [] | TMessageData[]
     contacts : [] | TContactData[]
     modalContactInfo : boolean
+    queryUsers : string
 } 
 export enum TypeAction {
     SET_MODAL_CONTACT_INFO = "SET_MODAL_CONTACT_INFO",
     SET_ACTIVE_CONTACT_DATA = "SET_ACTIVE_CONTACT_DATA",
     SET_MESSAGES = "SET_MESSAGES",
     SET_CONTACTS = "SET_CONTACTS",
+    SET_QUERY_USERS = "SET_QUERY_USERS"
 }
 
 export type TActionChat = 
@@ -157,6 +159,8 @@ export type TActionChat =
 | {type: TypeAction.SET_CONTACTS; payload : []|TContactData[]}
 | {type: TypeAction.SET_MESSAGES; payload : []|TMessageData[]}
 | {type: TypeAction.SET_MODAL_CONTACT_INFO; payload: boolean}
+| {type: TypeAction.SET_QUERY_USERS; payload: string}
+
 
 //---------------------------------Type Redux toolkit------------------------------//
 export interface TThunkApi{

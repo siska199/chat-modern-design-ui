@@ -46,6 +46,7 @@ const FormAuth = () => {
             })
         }
     }
+    
     const handleOnChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
         setForm({
             ...form,

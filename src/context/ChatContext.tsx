@@ -9,7 +9,9 @@ const initialState : TChatState = {
     activeContactData : null,
     messages : [],
     contacts : [],
-    modalContactInfo : false
+    modalContactInfo : false,
+    queryUsers : ""
+
 }
 const defaultDispatch : React.Dispatch<TActionChat> = () => initialState
 const ChatContext = createContext<IChatContextState>({
@@ -30,6 +32,8 @@ const reducer = (state :TChatState,action:TActionChat) : TChatState=>{
             return {...state, modalContactInfo : action.payload}
         case  TypeAction.SET_MESSAGES:
             return {...state, messages : action.payload}
+        case TypeAction.SET_QUERY_USERS :
+            return {...state, queryUsers : action.payload}
         default:
             return {...state}
     }
@@ -46,9 +50,11 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
 
     useEffect(()=>{
         socket.emit(SOCKET_EVENTS.USER_IN_OUT)
+
     },[user])
 
     socket.off(SOCKET_EVENTS.CONTACTS).on(SOCKET_EVENTS.CONTACTS,(dataContacts)=>{
+        console.log("contacts: ", dataContacts)
         dispatch({
             type : TypeAction.SET_CONTACTS,
             payload: dataContacts
@@ -71,10 +77,16 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
     .on(SOCKET_EVENTS.NEW_MESSAGE, (idReceiver) => {
       socket.emit(SOCKET_EVENTS.LOAD_MESSAGES, {idReceiver,loadContacts:true});
     });
-  socket.off(SOCKET_EVENTS.RELOAD_CONTACTS).on(SOCKET_EVENTS.RELOAD_CONTACTS, () => {
-    socket.emit(SOCKET_EVENTS.LOAD_CONTACTS, user?.id);
-  });
 
+    socket.off(SOCKET_EVENTS.RELOAD_CONTACTS).on(SOCKET_EVENTS.RELOAD_CONTACTS, () => {
+        const form = {idUser: user ? user?.id : 0, query:state.queryUsers}
+        socket.emit(SOCKET_EVENTS.LOAD_CONTACTS,form );
+      });
+
+    useEffect(()=>{
+        const form = {idUser: user ? user?.id : 0, query:state.queryUsers}
+        socket.emit(SOCKET_EVENTS.LOAD_CONTACTS,form );
+    },[state.queryUsers])
     return(
         <ChatContext.Provider value={{state, dispatch, socket}}>
             {children}
