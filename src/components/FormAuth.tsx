@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 import Input from '../atoms/Input'
 import Loading from "../atoms/Loading"
@@ -7,6 +7,7 @@ import { Alert } from "../lib/helperFunction"
 import { TFormAuth } from "../lib/types"
 import { handleLogin, handleRegister } from "../redux/features/authSlice"
 import { useAppDispatch } from "../redux/store"
+
 const FormAuth = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
@@ -19,6 +20,12 @@ const FormAuth = () => {
     const [form, setForm] = useState(initialForm)
     const [type, setType] = useState<"Log In" | "Register">("Log In")
     const [loading, setLoading] = useState(false)
+
+    useEffect(()=>{
+        return ()=>{
+            setForm(initialForm)
+        }
+    },[])
     
     const handleSubmit = (e: React.SyntheticEvent)=>{
         e.preventDefault()

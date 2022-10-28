@@ -1,5 +1,6 @@
 import {useContext, useEffect, useRef} from "react"
 import Contact from '../atoms/Contact'
+import Empty from "../atoms/Empty"
 import ChatContext from "../context/ChatContext"
 import SOCKET_EVENTS from "../lib/socketEvents"
 
@@ -21,9 +22,11 @@ const ListContact = () => {
       <h1 className='px-3 font-medium pb-4 sticky top-0 bg-cd800 z-[20] '>Messages</h1>
       <div className="">
         {
-          contacts?.map((data,i)=>(
+          contacts.length>0 ? contacts?.map((data,i)=>(
             <Contact handleContactActive={handleContactActive} key={i} {...data}/>
-          ))
+          )):(
+            <Empty messages="You Dont Have Contact Friends 🙅‍♀️"/>
+          )
         }
       </div>
     </div>

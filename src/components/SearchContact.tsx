@@ -9,7 +9,8 @@ import {IoCloseOutline} from "react-icons/io5"
 const SearchContact = () => {
   const user = useAppSelector(state=>state.auths.user)
   const {socket, state:{queryUsers}, dispatch} = useContext(ChatContext)
-
+  const [focus, setFocus] = useState(false)
+  console.log("focus")
   const handleOnChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     try {
       const form = {idUser: user?.id, query: e.target.value}
@@ -28,7 +29,7 @@ const SearchContact = () => {
   return (
     <div className='bg-cd800 '>
       <div className='my-5  flex mx-3 p-3 gap-3 items-center rounded-lg border-[0.005rem] bg-cd700 border-cd600'>
-          {queryUsers?(
+          {(focus || queryUsers)?(
             <IoCloseOutline className="cursor cursor-pointer text-[1.1rem]" onClick={()=>dispatch({
               type : TypeAction.SET_QUERY_USERS,
               payload : ""
@@ -36,7 +37,7 @@ const SearchContact = () => {
           ):(
             <BsSearch />
           )}
-          <input value={queryUsers} onChange={(e)=>handleOnChange(e)} className='bg-transparent w-full font-thin text-sm placeholder:font-thin placeholder:text-sm outline-none' placeholder='Search or start new chat...'/>
+          <input onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} value={queryUsers} onChange={(e)=>handleOnChange(e)} className='bg-transparent w-full font-thin text-sm placeholder:font-thin placeholder:text-sm outline-none' placeholder='Search or start new chat...'/>
       </div>
     </div>
   )

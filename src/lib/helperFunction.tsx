@@ -43,16 +43,16 @@ export const handleUploadImageToCloudinary = async (image:File) => {
     return dataImage.secure_url;
   };
   
-  export const getFormatTime = (date:string) => {
-    const dateNew = new Date(date);
-    const stringHours = String(dateNew.getHours());
-    const stringMinutes = String(dateNew.getMinutes());
-  
-    const dateNewFormat = `${
-      stringHours.length > 1 ? stringHours : 0 + stringHours
-    }:${stringMinutes.length > 1 ? stringMinutes : 0 + stringMinutes}`;
-    return dateNewFormat;
-  };
+export const getFormatTime = (date:string) => {
+  // const dateNew = new Date(date);
+  // const stringHours = String(dateNew.getHours());
+  // const stringMinutes = String(dateNew.getMinutes());
+  // const dateNewFormat = `${
+  //   stringHours.length > 1 ? stringHours : 0 + stringHours
+  // }:${stringMinutes.length > 1 ? stringMinutes : 0 + stringMinutes}`;
+
+  return moment(date).calendar()
+};
   
 
   export const formatDateForSumContactInfo = (date:string) => {
