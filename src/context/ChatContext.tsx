@@ -50,7 +50,6 @@ export const ChatContextProvider : React.FC<IChatContextProvider> = ({children})
 
     useEffect(()=>{
         socket.emit(SOCKET_EVENTS.USER_IN_OUT)
-
     },[user])
 
     socket.off(SOCKET_EVENTS.CONTACTS).on(SOCKET_EVENTS.CONTACTS,(dataContacts)=>{

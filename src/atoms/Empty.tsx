@@ -7,7 +7,7 @@ type Props = {
 const Empty : React.FC<Props> = ({messages})=> {
   return (
     <div className="w-full">
-        <p className="text-cd500 border-[0.005rem] text-sm py-2 text-center">
+        <p className="text-cd500 border-[0.005rem] border-cd700 text-sm py-2 text-center">
            {messages}
         </p>
     </div>

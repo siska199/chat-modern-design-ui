@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react"
+import React, { useContext, useState } from "react"
 import {BsSearch} from "react-icons/bs"
 import ChatContext from "../context/ChatContext"
 import SOCKET_EVENTS from "../lib/socketEvents"
